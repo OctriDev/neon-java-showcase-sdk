@@ -26,8 +26,11 @@ import dev.octri.showcase.neon.models.branch.BranchOperations;
 import dev.octri.showcase.neon.models.branch.BranchSchemaCompareResponse;
 import dev.octri.showcase.neon.models.branch.BranchSchemaResponse;
 import dev.octri.showcase.neon.models.branch.BranchesCountResponse;
+import dev.octri.showcase.neon.models.branch.CreateBranchResponse;
 import dev.octri.showcase.neon.models.branch.DatabaseOperations;
 import dev.octri.showcase.neon.models.branch.DatabaseResponse;
+import dev.octri.showcase.neon.models.branch.GetBranchResponse;
+import dev.octri.showcase.neon.models.branch.ListBranchResponse;
 import dev.octri.showcase.neon.models.branch.MaskingRulesResponse;
 import dev.octri.showcase.neon.models.branch.RoleOperations;
 import dev.octri.showcase.neon.models.branch.RolePasswordResponse;
@@ -38,9 +41,9 @@ import dev.octri.showcase.neon.models.buckets.BucketObjectsListResponse;
 import dev.octri.showcase.neon.models.buckets.BucketResponse;
 import dev.octri.showcase.neon.models.buckets.BucketsListResponse;
 import dev.octri.showcase.neon.models.buckets.PresignResponse;
-import dev.octri.showcase.neon.models.consumption.ConsumptionHistoryPerBranchV2Response;
-import dev.octri.showcase.neon.models.consumption.ConsumptionHistoryPerProjectResponse;
-import dev.octri.showcase.neon.models.consumption.ConsumptionHistoryPerProjectV2Response;
+import dev.octri.showcase.neon.models.consumption.GetConsumptionHistoryPerBranchV2Response;
+import dev.octri.showcase.neon.models.consumption.GetConsumptionHistoryPerProjectResponse;
+import dev.octri.showcase.neon.models.consumption.GetConsumptionHistoryPerProjectV2Response;
 import dev.octri.showcase.neon.models.credentials.CreateCredentialResponse;
 import dev.octri.showcase.neon.models.credentials.CredentialSecret;
 import dev.octri.showcase.neon.models.credentials.ListCredentialsResponse;
@@ -50,42 +53,45 @@ import dev.octri.showcase.neon.models.data_api.DataAPIReponse;
 import dev.octri.showcase.neon.models.endpoint.EndpointOperations;
 import dev.octri.showcase.neon.models.endpoint.EndpointResponse;
 import dev.octri.showcase.neon.models.functions.CustomDomain;
-import dev.octri.showcase.neon.models.functions.CustomDomainsListResponse;
+import dev.octri.showcase.neon.models.functions.ListFunctionsCustomDomainsResponse;
+import dev.octri.showcase.neon.models.functions.ListFunctionsResponse;
 import dev.octri.showcase.neon.models.functions.NeonFunctionDeploymentResponse;
 import dev.octri.showcase.neon.models.functions.NeonFunctionResponse;
-import dev.octri.showcase.neon.models.functions.NeonFunctionsListResponse;
 import dev.octri.showcase.neon.models.functions.TriggerResponse;
 import dev.octri.showcase.neon.models.functions.TriggersListResponse;
 import dev.octri.showcase.neon.models.logs.ProjectBranchLogFieldValuesResponse;
 import dev.octri.showcase.neon.models.logs.ProjectBranchLogFieldsResponse;
 import dev.octri.showcase.neon.models.logs.ProjectBranchLogsQueryResponse;
+import dev.octri.showcase.neon.models.operation.ListOperationResponse;
 import dev.octri.showcase.neon.models.operation.OperationResponse;
+import dev.octri.showcase.neon.models.organizations.ListOrganizationsMembersResponse;
 import dev.octri.showcase.neon.models.organizations.Member;
 import dev.octri.showcase.neon.models.organizations.OrgApiKeyCreateResponse;
 import dev.octri.showcase.neon.models.organizations.OrgApiKeyRevokeResponse;
 import dev.octri.showcase.neon.models.organizations.OrgApiKeysListResponseItem;
 import dev.octri.showcase.neon.models.organizations.OrganizationInvitationsResponse;
-import dev.octri.showcase.neon.models.organizations.OrganizationMembersResponse;
 import dev.octri.showcase.neon.models.organizations.SpendingLimitResponse;
 import dev.octri.showcase.neon.models.organizations.VPCEndpointDetails;
 import dev.octri.showcase.neon.models.organizations.VPCEndpointsWithRegionResponse;
-import dev.octri.showcase.neon.models.project.AvailablePreloadLibraries;
-import dev.octri.showcase.neon.models.project.ConnectionURIResponse;
+import dev.octri.showcase.neon.models.project.CreateProjectResponse;
 import dev.octri.showcase.neon.models.project.JWKS;
 import dev.octri.showcase.neon.models.project.JWKSCreationOperation;
-import dev.octri.showcase.neon.models.project.ProjectJWKSResponse;
-import dev.octri.showcase.neon.models.project.ProjectMemberRoleResponse;
-import dev.octri.showcase.neon.models.project.ProjectMembers;
-import dev.octri.showcase.neon.models.project.ProjectPermission;
-import dev.octri.showcase.neon.models.project.ProjectPermissions;
-import dev.octri.showcase.neon.models.project.ProjectRecoverResponse;
-import dev.octri.showcase.neon.models.project.ProjectResponse;
-import dev.octri.showcase.neon.models.project.ProjectTransferRequestResponse;
-import dev.octri.showcase.neon.models.project.ProjectsResponse;
+import dev.octri.showcase.neon.models.project.UpdateProjectResponse;
+import dev.octri.showcase.neon.models.project_available.AvailablePreloadLibraries;
+import dev.octri.showcase.neon.models.project_connection.ConnectionURIResponse;
+import dev.octri.showcase.neon.models.project_list.ListProjectsResponse;
+import dev.octri.showcase.neon.models.project_list.ListSharedProjectsResponse;
+import dev.octri.showcase.neon.models.project_project.ProjectJWKSResponse;
+import dev.octri.showcase.neon.models.project_project.ProjectMemberRoleResponse;
+import dev.octri.showcase.neon.models.project_project.ProjectMembers;
+import dev.octri.showcase.neon.models.project_project.ProjectPermission;
+import dev.octri.showcase.neon.models.project_project.ProjectPermissions;
+import dev.octri.showcase.neon.models.project_project.ProjectRecoverResponse;
+import dev.octri.showcase.neon.models.project_project.ProjectResponse;
+import dev.octri.showcase.neon.models.project_project.ProjectTransferRequestResponse;
 import dev.octri.showcase.neon.models.realtime.Realtime;
 import dev.octri.showcase.neon.models.realtime.RealtimeSecret;
 import dev.octri.showcase.neon.models.region.ActiveRegionsResponse;
-import dev.octri.showcase.neon.models.shared.BranchesResponse;
 import dev.octri.showcase.neon.models.shared.DatabasesResponse;
 import dev.octri.showcase.neon.models.shared.EmptyResponse;
 import dev.octri.showcase.neon.models.shared.EndpointsResponse;
@@ -97,7 +103,6 @@ import dev.octri.showcase.neon.models.shared.VPCEndpointsResponse;
 import dev.octri.showcase.neon.models.shared_api.ApiKeyCreateResponse;
 import dev.octri.showcase.neon.models.shared_api.ApiKeyRevokeResponse;
 import dev.octri.showcase.neon.models.shared_api.ApiKeysListResponseItem;
-import dev.octri.showcase.neon.models.shared_branch.BranchResponse;
 import dev.octri.showcase.neon.models.shared_neon.NeonAuthCreateIntegrationResponse;
 import dev.octri.showcase.neon.models.shared_neon.NeonAuthCreateNewUserResponse;
 import dev.octri.showcase.neon.models.shared_neon.NeonAuthEmailServerConfigResponse;
@@ -105,6 +110,7 @@ import dev.octri.showcase.neon.models.shared_neon.NeonAuthIntegration;
 import dev.octri.showcase.neon.models.shared_neon.NeonAuthOauthProvider;
 import dev.octri.showcase.neon.models.shared_neon.NeonAuthRedirectURIWhitelistResponse;
 import dev.octri.showcase.neon.models.snapshot.BackupSchedule;
+import dev.octri.showcase.neon.models.snapshot.RestoreSnapshotResponse;
 import dev.octri.showcase.neon.models.storage.BranchStorage;
 import dev.octri.showcase.neon.models.users.AuthDetailsResponse;
 import dev.octri.showcase.neon.models.users.CurrentUserInfoResponse;
@@ -226,42 +232,42 @@ public class Neon {
         /**
          * Retrieves a list of projects for the specified organization. If using a personal API key, include the `org_id` parameter to specify which organization to work with. If using an org API key, `org_id` is automatically inferred from the key. For more information, see [Manage organizations using the Neon API](https://neon.com/docs/manage/orgs-api) and [Manage projects](https://neon.com/docs/manage/projects/).
          */
-        public ProjectsResponse list(ProjectApi.ListProjectsRequest request) {
+        public ListProjectsResponse list(ProjectApi.ListProjectsRequest request) {
             return ProjectApi.listProjects(this.clientConfig, request);
         }
 
         /**
          * Retrieves a list of projects for the specified organization. If using a personal API key, include the `org_id` parameter to specify which organization to work with. If using an org API key, `org_id` is automatically inferred from the key. For more information, see [Manage organizations using the Neon API](https://neon.com/docs/manage/orgs-api) and [Manage projects](https://neon.com/docs/manage/projects/).
          */
-        public ProjectsResponse list(ProjectApi.ListProjectsRequest request, SdkConfig.RequestOptions options) {
+        public ListProjectsResponse list(ProjectApi.ListProjectsRequest request, SdkConfig.RequestOptions options) {
             return ProjectApi.listProjects(this.clientConfig, request, options);
         }
 
         /**
          * Creates a Neon project within an organization. If using a personal API key, include the `org_id` parameter to specify which organization to create the project in. If using an org API key, `org_id` is automatically inferred from the key. Plan limits define how many projects you can create. For more information, see [Manage projects](https://neon.com/docs/manage/projects/). You can specify a region and Postgres version in the request body. Neon supports Postgres 14 through 18, with 19 rolling out to enabled regions. For supported regions and `region_id` values, see [Regions](https://neon.com/docs/introduction/regions/).
          */
-        public ProjectResponse create(ProjectApi.CreateProjectRequest request) {
+        public CreateProjectResponse create(ProjectApi.CreateProjectRequest request) {
             return ProjectApi.createProject(this.clientConfig, request);
         }
 
         /**
          * Creates a Neon project within an organization. If using a personal API key, include the `org_id` parameter to specify which organization to create the project in. If using an org API key, `org_id` is automatically inferred from the key. Plan limits define how many projects you can create. For more information, see [Manage projects](https://neon.com/docs/manage/projects/). You can specify a region and Postgres version in the request body. Neon supports Postgres 14 through 18, with 19 rolling out to enabled regions. For supported regions and `region_id` values, see [Regions](https://neon.com/docs/introduction/regions/).
          */
-        public ProjectResponse create(ProjectApi.CreateProjectRequest request, SdkConfig.RequestOptions options) {
+        public CreateProjectResponse create(ProjectApi.CreateProjectRequest request, SdkConfig.RequestOptions options) {
             return ProjectApi.createProject(this.clientConfig, request, options);
         }
 
         /**
          * Retrieves a list of projects shared with your Neon account. For more information, see [Manage projects](https://neon.com/docs/manage/projects/).
          */
-        public ProjectsResponse listShared(ProjectApi.ListSharedProjectsRequest request) {
+        public ListSharedProjectsResponse listShared(ProjectApi.ListSharedProjectsRequest request) {
             return ProjectApi.listSharedProjects(this.clientConfig, request);
         }
 
         /**
          * Retrieves a list of projects shared with your Neon account. For more information, see [Manage projects](https://neon.com/docs/manage/projects/).
          */
-        public ProjectsResponse listShared(ProjectApi.ListSharedProjectsRequest request, SdkConfig.RequestOptions options) {
+        public ListSharedProjectsResponse listShared(ProjectApi.ListSharedProjectsRequest request, SdkConfig.RequestOptions options) {
             return ProjectApi.listSharedProjects(this.clientConfig, request, options);
         }
 
@@ -284,7 +290,7 @@ public class Neon {
          *
          * Updates the specified project. Configurable properties include the project name, default compute settings, history retention period, and IP allowlist.
          */
-        public ProjectResponse update(ProjectApi.UpdateProjectRequest request) {
+        public UpdateProjectResponse update(ProjectApi.UpdateProjectRequest request) {
             return ProjectApi.updateProject(this.clientConfig, request);
         }
 
@@ -293,7 +299,7 @@ public class Neon {
          *
          * Updates the specified project. Configurable properties include the project name, default compute settings, history retention period, and IP allowlist.
          */
-        public ProjectResponse update(ProjectApi.UpdateProjectRequest request, SdkConfig.RequestOptions options) {
+        public UpdateProjectResponse update(ProjectApi.UpdateProjectRequest request, SdkConfig.RequestOptions options) {
             return ProjectApi.updateProject(this.clientConfig, request, options);
         }
 
@@ -648,14 +654,14 @@ public class Neon {
         /**
          * Retrieves a list of operations for the specified Neon project. The number of operations returned can be large. To paginate the response, issue an initial request with a `limit` value. Then, add the `cursor` value that was returned in the response to the next request. Operations older than 6 months may be deleted from our systems. If you need more history than that, you should store your own history.
          */
-        public OperationsResponse list(OperationApi.ListOperationRequest request) {
+        public ListOperationResponse list(OperationApi.ListOperationRequest request) {
             return OperationApi.listOperation(this.clientConfig, request);
         }
 
         /**
          * Retrieves a list of operations for the specified Neon project. The number of operations returned can be large. To paginate the response, issue an initial request with a `limit` value. Then, add the `cursor` value that was returned in the response to the next request. Operations older than 6 months may be deleted from our systems. If you need more history than that, you should store your own history.
          */
-        public OperationsResponse list(OperationApi.ListOperationRequest request, SdkConfig.RequestOptions options) {
+        public ListOperationResponse list(OperationApi.ListOperationRequest request, SdkConfig.RequestOptions options) {
             return OperationApi.listOperation(this.clientConfig, request, options);
         }
 
@@ -1612,28 +1618,28 @@ public class Neon {
         /**
          * Creates a branch in the specified project. No request body is required, but you can specify one to create a compute endpoint or select a non-default parent branch. By default, the branch is created from the project's default branch with no compute endpoint, and the branch name is auto-generated. To access the branch, add a `read_write` endpoint. Each branch supports one read-write endpoint and multiple read-only endpoints. For related information, see [Manage branches](https://neon.com/docs/manage/branches/).
          */
-        public BranchResponse create(BranchApi.CreateBranchRequest request) {
+        public CreateBranchResponse create(BranchApi.CreateBranchRequest request) {
             return BranchApi.createBranch(this.clientConfig, request);
         }
 
         /**
          * Creates a branch in the specified project. No request body is required, but you can specify one to create a compute endpoint or select a non-default parent branch. By default, the branch is created from the project's default branch with no compute endpoint, and the branch name is auto-generated. To access the branch, add a `read_write` endpoint. Each branch supports one read-write endpoint and multiple read-only endpoints. For related information, see [Manage branches](https://neon.com/docs/manage/branches/).
          */
-        public BranchResponse create(BranchApi.CreateBranchRequest request, SdkConfig.RequestOptions options) {
+        public CreateBranchResponse create(BranchApi.CreateBranchRequest request, SdkConfig.RequestOptions options) {
             return BranchApi.createBranch(this.clientConfig, request, options);
         }
 
         /**
          * Retrieves a list of branches for the specified project. Each Neon project has a root branch named `main`. A `branch_id` value has a `br-` prefix. A project may contain child branches that were branched from `main` or from another branch. A parent branch is identified by the `parent_id` value, which is the `id` of the parent branch. For related information, see [Manage branches](https://neon.com/docs/manage/branches/).
          */
-        public BranchesResponse list(BranchApi.ListBranchRequest request) {
+        public ListBranchResponse list(BranchApi.ListBranchRequest request) {
             return BranchApi.listBranch(this.clientConfig, request);
         }
 
         /**
          * Retrieves a list of branches for the specified project. Each Neon project has a root branch named `main`. A `branch_id` value has a `br-` prefix. A project may contain child branches that were branched from `main` or from another branch. A parent branch is identified by the `parent_id` value, which is the `id` of the parent branch. For related information, see [Manage branches](https://neon.com/docs/manage/branches/).
          */
-        public BranchesResponse list(BranchApi.ListBranchRequest request, SdkConfig.RequestOptions options) {
+        public ListBranchResponse list(BranchApi.ListBranchRequest request, SdkConfig.RequestOptions options) {
             return BranchApi.listBranch(this.clientConfig, request, options);
         }
 
@@ -1642,7 +1648,7 @@ public class Neon {
          *
          * Creates a new branch with anonymized data using PostgreSQL Anonymizer for static masking. This allows developers to work with masked production data. Optionally, provide `masking_rules` to set initial masking rules for the branch and `start_anonymization` to automatically start anonymization after creation. This combines functionality of updating masking rules and starting anonymization into the branch creation request. **Note**: This endpoint is currently in Beta.
          */
-        public BranchResponse createAnonymized(BranchApi.CreateBranchAnonymizedRequest request) {
+        public CreateBranchResponse createAnonymized(BranchApi.CreateBranchAnonymizedRequest request) {
             return BranchApi.createBranchAnonymized(this.clientConfig, request);
         }
 
@@ -1651,7 +1657,7 @@ public class Neon {
          *
          * Creates a new branch with anonymized data using PostgreSQL Anonymizer for static masking. This allows developers to work with masked production data. Optionally, provide `masking_rules` to set initial masking rules for the branch and `start_anonymization` to automatically start anonymization after creation. This combines functionality of updating masking rules and starting anonymization into the branch creation request. **Note**: This endpoint is currently in Beta.
          */
-        public BranchResponse createAnonymized(BranchApi.CreateBranchAnonymizedRequest request, SdkConfig.RequestOptions options) {
+        public CreateBranchResponse createAnonymized(BranchApi.CreateBranchAnonymizedRequest request, SdkConfig.RequestOptions options) {
             return BranchApi.createBranchAnonymized(this.clientConfig, request, options);
         }
 
@@ -1672,14 +1678,14 @@ public class Neon {
         /**
          * Retrieves information about the specified branch. A `branch_id` value has a `br-` prefix. Each Neon project is initially created with a root and default branch named `main`. A project can contain one or more branches. A parent branch is identified by a `parent_id` value, which is the `id` of the parent branch. For related information, see [Manage branches](https://neon.com/docs/manage/branches/).
          */
-        public BranchResponse get(BranchApi.GetBranchRequest request) {
+        public GetBranchResponse get(BranchApi.GetBranchRequest request) {
             return BranchApi.getBranch(this.clientConfig, request);
         }
 
         /**
          * Retrieves information about the specified branch. A `branch_id` value has a `br-` prefix. Each Neon project is initially created with a root and default branch named `main`. A project can contain one or more branches. A parent branch is identified by a `parent_id` value, which is the `id` of the parent branch. For related information, see [Manage branches](https://neon.com/docs/manage/branches/).
          */
-        public BranchResponse get(BranchApi.GetBranchRequest request, SdkConfig.RequestOptions options) {
+        public GetBranchResponse get(BranchApi.GetBranchRequest request, SdkConfig.RequestOptions options) {
             return BranchApi.getBranch(this.clientConfig, request, options);
         }
 
@@ -2212,42 +2218,42 @@ public class Neon {
         /**
          * Retrieves consumption metrics for Scale, Business, and Enterprise plan projects. History begins at the time of upgrade. Results are ordered by time in ascending order (oldest to newest). Issuing a call to this API does not wake a project's compute endpoint.
          */
-        public ConsumptionHistoryPerProjectResponse getHistoryPerProject(Consumption.GetConsumptionHistoryPerProjectRequest request) {
+        public GetConsumptionHistoryPerProjectResponse getHistoryPerProject(Consumption.GetConsumptionHistoryPerProjectRequest request) {
             return Consumption.getConsumptionHistoryPerProject(this.clientConfig, request);
         }
 
         /**
          * Retrieves consumption metrics for Scale, Business, and Enterprise plan projects. History begins at the time of upgrade. Results are ordered by time in ascending order (oldest to newest). Issuing a call to this API does not wake a project's compute endpoint.
          */
-        public ConsumptionHistoryPerProjectResponse getHistoryPerProject(Consumption.GetConsumptionHistoryPerProjectRequest request, SdkConfig.RequestOptions options) {
+        public GetConsumptionHistoryPerProjectResponse getHistoryPerProject(Consumption.GetConsumptionHistoryPerProjectRequest request, SdkConfig.RequestOptions options) {
             return Consumption.getConsumptionHistoryPerProject(this.clientConfig, request, options);
         }
 
         /**
          * Returns consumption metrics for up to `limit` projects per page. If `project_ids` is omitted, projects in the organization are included across pages (use `cursor`). If `project_ids` is provided, the response is limited to those projects (up to 100). Available for accounts on Launch, Scale, Agent, Business, and Enterprise plans. History starts when the account upgrades to an eligible plan. The `metrics` query parameter is required. Supported values: `compute_unit_seconds`, `root_branch_bytes_month`, `child_branch_bytes_month`, `instant_restore_bytes_month`, `public_network_transfer_bytes`, `private_network_transfer_bytes`, `extra_branches_month`, `snapshot_storage_bytes_month`. Consumption metrics within each project are returned in ascending time order (oldest first). This request does not wake project computes.
          */
-        public ConsumptionHistoryPerProjectV2Response getHistoryPerProjectV2(Consumption.GetConsumptionHistoryPerProjectV2Request request) {
+        public GetConsumptionHistoryPerProjectV2Response getHistoryPerProjectV2(Consumption.GetConsumptionHistoryPerProjectV2Request request) {
             return Consumption.getConsumptionHistoryPerProjectV2(this.clientConfig, request);
         }
 
         /**
          * Returns consumption metrics for up to `limit` projects per page. If `project_ids` is omitted, projects in the organization are included across pages (use `cursor`). If `project_ids` is provided, the response is limited to those projects (up to 100). Available for accounts on Launch, Scale, Agent, Business, and Enterprise plans. History starts when the account upgrades to an eligible plan. The `metrics` query parameter is required. Supported values: `compute_unit_seconds`, `root_branch_bytes_month`, `child_branch_bytes_month`, `instant_restore_bytes_month`, `public_network_transfer_bytes`, `private_network_transfer_bytes`, `extra_branches_month`, `snapshot_storage_bytes_month`. Consumption metrics within each project are returned in ascending time order (oldest first). This request does not wake project computes.
          */
-        public ConsumptionHistoryPerProjectV2Response getHistoryPerProjectV2(Consumption.GetConsumptionHistoryPerProjectV2Request request, SdkConfig.RequestOptions options) {
+        public GetConsumptionHistoryPerProjectV2Response getHistoryPerProjectV2(Consumption.GetConsumptionHistoryPerProjectV2Request request, SdkConfig.RequestOptions options) {
             return Consumption.getConsumptionHistoryPerProjectV2(this.clientConfig, request, options);
         }
 
         /**
          * Returns consumption metrics for each branch across one or more projects listed in `project_ids` (1 to 100 projects). Available for accounts on paid usage-based Launch, Scale, Agent, and Enterprise plans. History starts when the account first ingests branch-level consumption data. The `metrics` query parameter is required. Only these six values are supported on this endpoint: `compute_unit_seconds`, `root_branch_bytes_month`, `child_branch_bytes_month`, `instant_restore_bytes_month`, `public_network_transfer_bytes`, `private_network_transfer_bytes`. This endpoint does not support `extra_branches_month` or `snapshot_storage_bytes_month`. Use `GET /consumption_history/v2/projects` for those. Consumption metrics within each branch are returned in ascending time order (oldest first). This request does not wake project computes.
          */
-        public ConsumptionHistoryPerBranchV2Response getHistoryPerBranchV2(Consumption.GetConsumptionHistoryPerBranchV2Request request) {
+        public GetConsumptionHistoryPerBranchV2Response getHistoryPerBranchV2(Consumption.GetConsumptionHistoryPerBranchV2Request request) {
             return Consumption.getConsumptionHistoryPerBranchV2(this.clientConfig, request);
         }
 
         /**
          * Returns consumption metrics for each branch across one or more projects listed in `project_ids` (1 to 100 projects). Available for accounts on paid usage-based Launch, Scale, Agent, and Enterprise plans. History starts when the account first ingests branch-level consumption data. The `metrics` query parameter is required. Only these six values are supported on this endpoint: `compute_unit_seconds`, `root_branch_bytes_month`, `child_branch_bytes_month`, `instant_restore_bytes_month`, `public_network_transfer_bytes`, `private_network_transfer_bytes`. This endpoint does not support `extra_branches_month` or `snapshot_storage_bytes_month`. Use `GET /consumption_history/v2/projects` for those. Consumption metrics within each branch are returned in ascending time order (oldest first). This request does not wake project computes.
          */
-        public ConsumptionHistoryPerBranchV2Response getHistoryPerBranchV2(Consumption.GetConsumptionHistoryPerBranchV2Request request, SdkConfig.RequestOptions options) {
+        public GetConsumptionHistoryPerBranchV2Response getHistoryPerBranchV2(Consumption.GetConsumptionHistoryPerBranchV2Request request, SdkConfig.RequestOptions options) {
             return Consumption.getConsumptionHistoryPerBranchV2(this.clientConfig, request, options);
         }
 
@@ -2358,14 +2364,14 @@ public class Neon {
         /**
          * Retrieves a paginated list of members for the specified organization.
          */
-        public OrganizationMembersResponse listMembers(Organizations.ListOrganizationsMembersRequest request) {
+        public ListOrganizationsMembersResponse listMembers(Organizations.ListOrganizationsMembersRequest request) {
             return Organizations.listOrganizationsMembers(this.clientConfig, request);
         }
 
         /**
          * Retrieves a paginated list of members for the specified organization.
          */
-        public OrganizationMembersResponse listMembers(Organizations.ListOrganizationsMembersRequest request, SdkConfig.RequestOptions options) {
+        public ListOrganizationsMembersResponse listMembers(Organizations.ListOrganizationsMembersRequest request, SdkConfig.RequestOptions options) {
             return Organizations.listOrganizationsMembers(this.clientConfig, request, options);
         }
 
@@ -2686,14 +2692,14 @@ public class Neon {
         /**
          * Restores the specified snapshot to a new branch, and optionally finalizes the restore operation to replace the original branch.
          */
-        public BranchResponse restore(SnapshotApi.RestoreSnapshotRequest request) {
+        public RestoreSnapshotResponse restore(SnapshotApi.RestoreSnapshotRequest request) {
             return SnapshotApi.restoreSnapshot(this.clientConfig, request);
         }
 
         /**
          * Restores the specified snapshot to a new branch, and optionally finalizes the restore operation to replace the original branch.
          */
-        public BranchResponse restore(SnapshotApi.RestoreSnapshotRequest request, SdkConfig.RequestOptions options) {
+        public RestoreSnapshotResponse restore(SnapshotApi.RestoreSnapshotRequest request, SdkConfig.RequestOptions options) {
             return SnapshotApi.restoreSnapshot(this.clientConfig, request, options);
         }
 
@@ -3034,14 +3040,14 @@ public class Neon {
         /**
          * Lists functions on the specified branch. **Note**: This endpoint is currently in Beta.
          */
-        public NeonFunctionsListResponse list(Functions.ListFunctionsRequest request) {
+        public ListFunctionsResponse list(Functions.ListFunctionsRequest request) {
             return Functions.listFunctions(this.clientConfig, request);
         }
 
         /**
          * Lists functions on the specified branch. **Note**: This endpoint is currently in Beta.
          */
-        public NeonFunctionsListResponse list(Functions.ListFunctionsRequest request, SdkConfig.RequestOptions options) {
+        public ListFunctionsResponse list(Functions.ListFunctionsRequest request, SdkConfig.RequestOptions options) {
             return Functions.listFunctions(this.clientConfig, request, options);
         }
 
@@ -3200,14 +3206,14 @@ public class Neon {
         /**
          * Lists all custom domains registered on the branch, across every target entity. **Note**: This endpoint is currently in Beta.
          */
-        public CustomDomainsListResponse listCustomDomains(Functions.ListFunctionsCustomDomainsRequest request) {
+        public ListFunctionsCustomDomainsResponse listCustomDomains(Functions.ListFunctionsCustomDomainsRequest request) {
             return Functions.listFunctionsCustomDomains(this.clientConfig, request);
         }
 
         /**
          * Lists all custom domains registered on the branch, across every target entity. **Note**: This endpoint is currently in Beta.
          */
-        public CustomDomainsListResponse listCustomDomains(Functions.ListFunctionsCustomDomainsRequest request, SdkConfig.RequestOptions options) {
+        public ListFunctionsCustomDomainsResponse listCustomDomains(Functions.ListFunctionsCustomDomainsRequest request, SdkConfig.RequestOptions options) {
             return Functions.listFunctionsCustomDomains(this.clientConfig, request, options);
         }
 

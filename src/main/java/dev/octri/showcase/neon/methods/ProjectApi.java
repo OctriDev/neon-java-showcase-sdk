@@ -5,25 +5,28 @@ package dev.octri.showcase.neon.methods;
 
 import dev.octri.showcase.neon.models.branch.AnnotationValueData;
 import dev.octri.showcase.neon.models.project.AcceptProjectTransferRequestSatisfiesPlanError;
-import dev.octri.showcase.neon.models.project.AdvisorCategory;
-import dev.octri.showcase.neon.models.project.AdvisorIssue;
-import dev.octri.showcase.neon.models.project.AvailablePreloadLibraries;
-import dev.octri.showcase.neon.models.project.ConnectionURIResponse;
+import dev.octri.showcase.neon.models.project.CreateProjectResponse;
 import dev.octri.showcase.neon.models.project.DefaultEndpointSettings;
 import dev.octri.showcase.neon.models.project.JWKS;
 import dev.octri.showcase.neon.models.project.JWKSCreationOperation;
 import dev.octri.showcase.neon.models.project.PgVersion;
-import dev.octri.showcase.neon.models.project.ProjectJWKSResponse;
-import dev.octri.showcase.neon.models.project.ProjectMemberRoleResponse;
-import dev.octri.showcase.neon.models.project.ProjectMembers;
-import dev.octri.showcase.neon.models.project.ProjectPermission;
-import dev.octri.showcase.neon.models.project.ProjectPermissions;
-import dev.octri.showcase.neon.models.project.ProjectRecoverResponse;
-import dev.octri.showcase.neon.models.project.ProjectResponse;
-import dev.octri.showcase.neon.models.project.ProjectRole;
-import dev.octri.showcase.neon.models.project.ProjectSettingsData;
-import dev.octri.showcase.neon.models.project.ProjectTransferRequestResponse;
-import dev.octri.showcase.neon.models.project.ProjectsResponse;
+import dev.octri.showcase.neon.models.project.UpdateProjectResponse;
+import dev.octri.showcase.neon.models.project_advisor.AdvisorCategory;
+import dev.octri.showcase.neon.models.project_advisor.AdvisorIssue;
+import dev.octri.showcase.neon.models.project_available.AvailablePreloadLibraries;
+import dev.octri.showcase.neon.models.project_connection.ConnectionURIResponse;
+import dev.octri.showcase.neon.models.project_list.ListProjectsResponse;
+import dev.octri.showcase.neon.models.project_list.ListSharedProjectsResponse;
+import dev.octri.showcase.neon.models.project_project.ProjectJWKSResponse;
+import dev.octri.showcase.neon.models.project_project.ProjectMemberRoleResponse;
+import dev.octri.showcase.neon.models.project_project.ProjectMembers;
+import dev.octri.showcase.neon.models.project_project.ProjectPermission;
+import dev.octri.showcase.neon.models.project_project.ProjectPermissions;
+import dev.octri.showcase.neon.models.project_project.ProjectRecoverResponse;
+import dev.octri.showcase.neon.models.project_project.ProjectResponse;
+import dev.octri.showcase.neon.models.project_project.ProjectRole;
+import dev.octri.showcase.neon.models.project_project.ProjectSettingsData;
+import dev.octri.showcase.neon.models.project_project.ProjectTransferRequestResponse;
 import dev.octri.showcase.neon.models.shared.ComputeUnit;
 import dev.octri.showcase.neon.models.shared.GeneralError;
 import dev.octri.showcase.neon.models.shared.Provisioner;
@@ -305,14 +308,14 @@ public class ProjectApi {
     /**
      * Retrieves a list of projects for the specified organization. If using a personal API key, include the `org_id` parameter to specify which organization to work with. If using an org API key, `org_id` is automatically inferred from the key. For more information, see [Manage organizations using the Neon API](https://neon.com/docs/manage/orgs-api) and [Manage projects](https://neon.com/docs/manage/projects/).
      */
-    public static ProjectsResponse listProjects(SdkConfig.ClientConfig clientConfig, ListProjectsRequest request) {
+    public static ListProjectsResponse listProjects(SdkConfig.ClientConfig clientConfig, ListProjectsRequest request) {
         return listProjects(clientConfig, request, null);
     }
 
     /**
      * Retrieves a list of projects for the specified organization. If using a personal API key, include the `org_id` parameter to specify which organization to work with. If using an org API key, `org_id` is automatically inferred from the key. For more information, see [Manage organizations using the Neon API](https://neon.com/docs/manage/orgs-api) and [Manage projects](https://neon.com/docs/manage/projects/).
      */
-    public static ProjectsResponse listProjects(SdkConfig.ClientConfig clientConfig, ListProjectsRequest request, SdkConfig.RequestOptions options) {
+    public static ListProjectsResponse listProjects(SdkConfig.ClientConfig clientConfig, ListProjectsRequest request, SdkConfig.RequestOptions options) {
         String cursor = request.getCursor();
         Long limit = request.getLimit();
         String search = request.getSearch();
@@ -332,7 +335,7 @@ public class ProjectApi {
             { Validation.RangeOpts __r = new Validation.RangeOpts(); __r.min = 100d; __r.max = 30000d; Validation.validateRange("timeout", timeout, __r); }
         }
 
-        return SdkClient.request(clientConfig, "GET", "/projects", SdkClient.q("cursor", SdkClient.queryValue(cursor, "form", true), "limit", SdkClient.queryValue(limit, "form", true), "search", SdkClient.queryValue(search, "form", true), "org_id", SdkClient.queryValue(orgId, "form", true), "timeout", SdkClient.queryValue(timeout, "form", true), "recoverable", SdkClient.queryValue(recoverable, "form", true)), null, null, new TypeReference<ProjectsResponse>(){}, "listProjects", null, SdkClient.ResponseDecoder.JSON, options, java.util.Map.of("default", GeneralError.class)).data;
+        return SdkClient.request(clientConfig, "GET", "/projects", SdkClient.q("cursor", SdkClient.queryValue(cursor, "form", true), "limit", SdkClient.queryValue(limit, "form", true), "search", SdkClient.queryValue(search, "form", true), "org_id", SdkClient.queryValue(orgId, "form", true), "timeout", SdkClient.queryValue(timeout, "form", true), "recoverable", SdkClient.queryValue(recoverable, "form", true)), null, null, new TypeReference<ListProjectsResponse>(){}, "listProjects", null, SdkClient.ResponseDecoder.JSON, options, java.util.Map.of("default", GeneralError.class)).data;
     }
 
 
@@ -356,17 +359,17 @@ public class ProjectApi {
     /**
      * Creates a Neon project within an organization. If using a personal API key, include the `org_id` parameter to specify which organization to create the project in. If using an org API key, `org_id` is automatically inferred from the key. Plan limits define how many projects you can create. For more information, see [Manage projects](https://neon.com/docs/manage/projects/). You can specify a region and Postgres version in the request body. Neon supports Postgres 14 through 18, with 19 rolling out to enabled regions. For supported regions and `region_id` values, see [Regions](https://neon.com/docs/introduction/regions/).
      */
-    public static ProjectResponse createProject(SdkConfig.ClientConfig clientConfig, CreateProjectRequest request) {
+    public static CreateProjectResponse createProject(SdkConfig.ClientConfig clientConfig, CreateProjectRequest request) {
         return createProject(clientConfig, request, null);
     }
 
     /**
      * Creates a Neon project within an organization. If using a personal API key, include the `org_id` parameter to specify which organization to create the project in. If using an org API key, `org_id` is automatically inferred from the key. Plan limits define how many projects you can create. For more information, see [Manage projects](https://neon.com/docs/manage/projects/). You can specify a region and Postgres version in the request body. Neon supports Postgres 14 through 18, with 19 rolling out to enabled regions. For supported regions and `region_id` values, see [Regions](https://neon.com/docs/introduction/regions/).
      */
-    public static ProjectResponse createProject(SdkConfig.ClientConfig clientConfig, CreateProjectRequest request, SdkConfig.RequestOptions options) {
+    public static CreateProjectResponse createProject(SdkConfig.ClientConfig clientConfig, CreateProjectRequest request, SdkConfig.RequestOptions options) {
         ProjectCreateRequestProject project = request.getProject();
 
-        return SdkClient.request(clientConfig, "POST", "/projects", null, SdkClient.q("project", project), null, new TypeReference<ProjectResponse>(){}, "createProject", null, SdkClient.ResponseDecoder.JSON, options, java.util.Map.of("default", GeneralError.class)).data;
+        return SdkClient.request(clientConfig, "POST", "/projects", null, SdkClient.q("project", project), null, new TypeReference<CreateProjectResponse>(){}, "createProject", null, SdkClient.ResponseDecoder.JSON, options, java.util.Map.of("default", GeneralError.class)).data;
     }
 
 
@@ -399,14 +402,14 @@ public class ProjectApi {
     /**
      * Retrieves a list of projects shared with your Neon account. For more information, see [Manage projects](https://neon.com/docs/manage/projects/).
      */
-    public static ProjectsResponse listSharedProjects(SdkConfig.ClientConfig clientConfig, ListSharedProjectsRequest request) {
+    public static ListSharedProjectsResponse listSharedProjects(SdkConfig.ClientConfig clientConfig, ListSharedProjectsRequest request) {
         return listSharedProjects(clientConfig, request, null);
     }
 
     /**
      * Retrieves a list of projects shared with your Neon account. For more information, see [Manage projects](https://neon.com/docs/manage/projects/).
      */
-    public static ProjectsResponse listSharedProjects(SdkConfig.ClientConfig clientConfig, ListSharedProjectsRequest request, SdkConfig.RequestOptions options) {
+    public static ListSharedProjectsResponse listSharedProjects(SdkConfig.ClientConfig clientConfig, ListSharedProjectsRequest request, SdkConfig.RequestOptions options) {
         String cursor = request.getCursor();
         Long limit = request.getLimit();
         String search = request.getSearch();
@@ -420,7 +423,7 @@ public class ProjectApi {
             { Validation.RangeOpts __r = new Validation.RangeOpts(); __r.min = 100d; __r.max = 30000d; Validation.validateRange("timeout", timeout, __r); }
         }
 
-        return SdkClient.request(clientConfig, "GET", "/projects/shared", SdkClient.q("cursor", SdkClient.queryValue(cursor, "form", true), "limit", SdkClient.queryValue(limit, "form", true), "search", SdkClient.queryValue(search, "form", true), "timeout", SdkClient.queryValue(timeout, "form", true)), null, null, new TypeReference<ProjectsResponse>(){}, "listSharedProjects", null, SdkClient.ResponseDecoder.JSON, options, java.util.Map.of("default", GeneralError.class)).data;
+        return SdkClient.request(clientConfig, "GET", "/projects/shared", SdkClient.q("cursor", SdkClient.queryValue(cursor, "form", true), "limit", SdkClient.queryValue(limit, "form", true), "search", SdkClient.queryValue(search, "form", true), "timeout", SdkClient.queryValue(timeout, "form", true)), null, null, new TypeReference<ListSharedProjectsResponse>(){}, "listSharedProjects", null, SdkClient.ResponseDecoder.JSON, options, java.util.Map.of("default", GeneralError.class)).data;
     }
 
 
@@ -485,7 +488,7 @@ public class ProjectApi {
      *
      * Updates the specified project. Configurable properties include the project name, default compute settings, history retention period, and IP allowlist.
      */
-    public static ProjectResponse updateProject(SdkConfig.ClientConfig clientConfig, UpdateProjectRequest request) {
+    public static UpdateProjectResponse updateProject(SdkConfig.ClientConfig clientConfig, UpdateProjectRequest request) {
         return updateProject(clientConfig, request, null);
     }
 
@@ -494,13 +497,13 @@ public class ProjectApi {
      *
      * Updates the specified project. Configurable properties include the project name, default compute settings, history retention period, and IP allowlist.
      */
-    public static ProjectResponse updateProject(SdkConfig.ClientConfig clientConfig, UpdateProjectRequest request, SdkConfig.RequestOptions options) {
+    public static UpdateProjectResponse updateProject(SdkConfig.ClientConfig clientConfig, UpdateProjectRequest request, SdkConfig.RequestOptions options) {
         String projectId = request.getProjectId();
         ProjectUpdateRequestProject project = request.getProject();
 
         Validation.validatePattern("project_id", projectId, "^[a-z0-9-]{1,60}$");
 
-        return SdkClient.request(clientConfig, "PATCH", "/projects/" + SdkClient.encodePathSegment(projectId) + "", null, SdkClient.q("project", project), null, new TypeReference<ProjectResponse>(){}, "updateProject", null, SdkClient.ResponseDecoder.JSON, options, java.util.Map.of("default", GeneralError.class)).data;
+        return SdkClient.request(clientConfig, "PATCH", "/projects/" + SdkClient.encodePathSegment(projectId) + "", null, SdkClient.q("project", project), null, new TypeReference<UpdateProjectResponse>(){}, "updateProject", null, SdkClient.ResponseDecoder.JSON, options, java.util.Map.of("default", GeneralError.class)).data;
     }
 
 

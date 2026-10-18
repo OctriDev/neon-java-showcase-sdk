@@ -6,10 +6,10 @@ package dev.octri.showcase.neon.methods;
 import dev.octri.showcase.neon.models.shared.EmptyResponse;
 import dev.octri.showcase.neon.models.shared.GeneralError;
 import dev.octri.showcase.neon.models.shared.OperationsResponse;
-import dev.octri.showcase.neon.models.shared_branch.BranchResponse;
 import dev.octri.showcase.neon.models.shared_operation.Operation;
 import dev.octri.showcase.neon.models.snapshot.BackupSchedule;
 import dev.octri.showcase.neon.models.snapshot.BackupScheduleItem;
+import dev.octri.showcase.neon.models.snapshot.RestoreSnapshotResponse;
 import dev.octri.showcase.neon.models.snapshot.Snapshot;
 import dev.octri.showcase.neon.SdkConfig;
 import dev.octri.showcase.neon.SdkClient;
@@ -304,14 +304,14 @@ public class SnapshotApi {
     /**
      * Restores the specified snapshot to a new branch, and optionally finalizes the restore operation to replace the original branch.
      */
-    public static BranchResponse restoreSnapshot(SdkConfig.ClientConfig clientConfig, RestoreSnapshotRequest request) {
+    public static RestoreSnapshotResponse restoreSnapshot(SdkConfig.ClientConfig clientConfig, RestoreSnapshotRequest request) {
         return restoreSnapshot(clientConfig, request, null);
     }
 
     /**
      * Restores the specified snapshot to a new branch, and optionally finalizes the restore operation to replace the original branch.
      */
-    public static BranchResponse restoreSnapshot(SdkConfig.ClientConfig clientConfig, RestoreSnapshotRequest request, SdkConfig.RequestOptions options) {
+    public static RestoreSnapshotResponse restoreSnapshot(SdkConfig.ClientConfig clientConfig, RestoreSnapshotRequest request, SdkConfig.RequestOptions options) {
         String projectId = request.getProjectId();
         String snapshotId = request.getSnapshotId();
         String name = request.getName();
@@ -323,7 +323,7 @@ public class SnapshotApi {
 
         Validation.validatePattern("snapshot_id", snapshotId, "^[a-z0-9-]{1,60}$");
 
-        return SdkClient.request(clientConfig, "POST", "/projects/" + SdkClient.encodePathSegment(projectId) + "/snapshots/" + SdkClient.encodePathSegment(snapshotId) + "/restore", SdkClient.q("name", SdkClient.queryValue(name, "form", true)), SdkClient.q("name", SdkClient.omitIfNull(name_2), "target_branch_id", SdkClient.omitIfNull(targetBranchId), "finalize_restore", SdkClient.omitIfNull(finalizeRestore)), null, new TypeReference<BranchResponse>(){}, "restoreSnapshot", null, SdkClient.ResponseDecoder.JSON, options, java.util.Map.of("default", GeneralError.class)).data;
+        return SdkClient.request(clientConfig, "POST", "/projects/" + SdkClient.encodePathSegment(projectId) + "/snapshots/" + SdkClient.encodePathSegment(snapshotId) + "/restore", SdkClient.q("name", SdkClient.queryValue(name, "form", true)), SdkClient.q("name", SdkClient.omitIfNull(name_2), "target_branch_id", SdkClient.omitIfNull(targetBranchId), "finalize_restore", SdkClient.omitIfNull(finalizeRestore)), null, new TypeReference<RestoreSnapshotResponse>(){}, "restoreSnapshot", null, SdkClient.ResponseDecoder.JSON, options, java.util.Map.of("default", GeneralError.class)).data;
     }
 
 

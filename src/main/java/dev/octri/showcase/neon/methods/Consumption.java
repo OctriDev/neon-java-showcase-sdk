@@ -4,10 +4,10 @@
 package dev.octri.showcase.neon.methods;
 
 import dev.octri.showcase.neon.models.consumption.ConsumptionHistoryGranularity;
-import dev.octri.showcase.neon.models.consumption.ConsumptionHistoryPerBranchV2Response;
-import dev.octri.showcase.neon.models.consumption.ConsumptionHistoryPerProjectResponse;
-import dev.octri.showcase.neon.models.consumption.ConsumptionHistoryPerProjectV2Response;
 import dev.octri.showcase.neon.models.consumption.ConsumptionHistoryQueryMetrics;
+import dev.octri.showcase.neon.models.consumption.GetConsumptionHistoryPerBranchV2Response;
+import dev.octri.showcase.neon.models.consumption.GetConsumptionHistoryPerProjectResponse;
+import dev.octri.showcase.neon.models.consumption.GetConsumptionHistoryPerProjectV2Response;
 import dev.octri.showcase.neon.models.shared.GeneralError;
 import dev.octri.showcase.neon.SdkConfig;
 import dev.octri.showcase.neon.SdkClient;
@@ -61,14 +61,14 @@ public class Consumption {
     /**
      * Retrieves consumption metrics for Scale, Business, and Enterprise plan projects. History begins at the time of upgrade. Results are ordered by time in ascending order (oldest to newest). Issuing a call to this API does not wake a project's compute endpoint.
      */
-    public static ConsumptionHistoryPerProjectResponse getConsumptionHistoryPerProject(SdkConfig.ClientConfig clientConfig, GetConsumptionHistoryPerProjectRequest request) {
+    public static GetConsumptionHistoryPerProjectResponse getConsumptionHistoryPerProject(SdkConfig.ClientConfig clientConfig, GetConsumptionHistoryPerProjectRequest request) {
         return getConsumptionHistoryPerProject(clientConfig, request, null);
     }
 
     /**
      * Retrieves consumption metrics for Scale, Business, and Enterprise plan projects. History begins at the time of upgrade. Results are ordered by time in ascending order (oldest to newest). Issuing a call to this API does not wake a project's compute endpoint.
      */
-    public static ConsumptionHistoryPerProjectResponse getConsumptionHistoryPerProject(SdkConfig.ClientConfig clientConfig, GetConsumptionHistoryPerProjectRequest request, SdkConfig.RequestOptions options) {
+    public static GetConsumptionHistoryPerProjectResponse getConsumptionHistoryPerProject(SdkConfig.ClientConfig clientConfig, GetConsumptionHistoryPerProjectRequest request, SdkConfig.RequestOptions options) {
         OffsetDateTime from = request.getFrom();
         OffsetDateTime to = request.getTo();
         ConsumptionHistoryGranularity granularity = request.getGranularity();
@@ -95,7 +95,7 @@ public class Consumption {
             Validation.validatePattern("org_id", orgId, "^[a-z0-9-]{1,60}$");
         }
 
-        return SdkClient.request(clientConfig, "GET", "/consumption_history/projects", SdkClient.q("from", SdkClient.queryValue(from, "form", true), "to", SdkClient.queryValue(to, "form", true), "granularity", SdkClient.queryValue(granularity, "form", true), "cursor", SdkClient.queryValue(cursor, "form", true), "limit", SdkClient.queryValue(limit, "form", true), "project_ids", SdkClient.queryValue(projectIds, "form", true), "org_id", SdkClient.queryValue(orgId, "form", true), "include_v1_metrics", SdkClient.queryValue(includeV1Metrics, "form", true), "metrics", SdkClient.queryValue(metrics, "form", true)), null, null, new TypeReference<ConsumptionHistoryPerProjectResponse>(){}, "getConsumptionHistoryPerProject", null, SdkClient.ResponseDecoder.JSON, options, java.util.Map.of("403", GeneralError.class, "404", GeneralError.class, "406", GeneralError.class, "429", GeneralError.class, "default", GeneralError.class)).data;
+        return SdkClient.request(clientConfig, "GET", "/consumption_history/projects", SdkClient.q("from", SdkClient.queryValue(from, "form", true), "to", SdkClient.queryValue(to, "form", true), "granularity", SdkClient.queryValue(granularity, "form", true), "cursor", SdkClient.queryValue(cursor, "form", true), "limit", SdkClient.queryValue(limit, "form", true), "project_ids", SdkClient.queryValue(projectIds, "form", true), "org_id", SdkClient.queryValue(orgId, "form", true), "include_v1_metrics", SdkClient.queryValue(includeV1Metrics, "form", true), "metrics", SdkClient.queryValue(metrics, "form", true)), null, null, new TypeReference<GetConsumptionHistoryPerProjectResponse>(){}, "getConsumptionHistoryPerProject", null, SdkClient.ResponseDecoder.JSON, options, java.util.Map.of("403", GeneralError.class, "404", GeneralError.class, "406", GeneralError.class, "429", GeneralError.class, "default", GeneralError.class)).data;
     }
 
 
@@ -140,14 +140,14 @@ public class Consumption {
     /**
      * Returns consumption metrics for up to `limit` projects per page. If `project_ids` is omitted, projects in the organization are included across pages (use `cursor`). If `project_ids` is provided, the response is limited to those projects (up to 100). Available for accounts on Launch, Scale, Agent, Business, and Enterprise plans. History starts when the account upgrades to an eligible plan. The `metrics` query parameter is required. Supported values: `compute_unit_seconds`, `root_branch_bytes_month`, `child_branch_bytes_month`, `instant_restore_bytes_month`, `public_network_transfer_bytes`, `private_network_transfer_bytes`, `extra_branches_month`, `snapshot_storage_bytes_month`. Consumption metrics within each project are returned in ascending time order (oldest first). This request does not wake project computes.
      */
-    public static ConsumptionHistoryPerProjectV2Response getConsumptionHistoryPerProjectV2(SdkConfig.ClientConfig clientConfig, GetConsumptionHistoryPerProjectV2Request request) {
+    public static GetConsumptionHistoryPerProjectV2Response getConsumptionHistoryPerProjectV2(SdkConfig.ClientConfig clientConfig, GetConsumptionHistoryPerProjectV2Request request) {
         return getConsumptionHistoryPerProjectV2(clientConfig, request, null);
     }
 
     /**
      * Returns consumption metrics for up to `limit` projects per page. If `project_ids` is omitted, projects in the organization are included across pages (use `cursor`). If `project_ids` is provided, the response is limited to those projects (up to 100). Available for accounts on Launch, Scale, Agent, Business, and Enterprise plans. History starts when the account upgrades to an eligible plan. The `metrics` query parameter is required. Supported values: `compute_unit_seconds`, `root_branch_bytes_month`, `child_branch_bytes_month`, `instant_restore_bytes_month`, `public_network_transfer_bytes`, `private_network_transfer_bytes`, `extra_branches_month`, `snapshot_storage_bytes_month`. Consumption metrics within each project are returned in ascending time order (oldest first). This request does not wake project computes.
      */
-    public static ConsumptionHistoryPerProjectV2Response getConsumptionHistoryPerProjectV2(SdkConfig.ClientConfig clientConfig, GetConsumptionHistoryPerProjectV2Request request, SdkConfig.RequestOptions options) {
+    public static GetConsumptionHistoryPerProjectV2Response getConsumptionHistoryPerProjectV2(SdkConfig.ClientConfig clientConfig, GetConsumptionHistoryPerProjectV2Request request, SdkConfig.RequestOptions options) {
         OffsetDateTime from = request.getFrom();
         OffsetDateTime to = request.getTo();
         ConsumptionHistoryGranularity granularity = request.getGranularity();
@@ -171,7 +171,7 @@ public class Consumption {
             { Validation.LengthOpts __i = new Validation.LengthOpts(); __i.min = 0; __i.max = 100; Validation.validateItems("project_ids", projectIds, __i); }
         }
 
-        return SdkClient.request(clientConfig, "GET", "/consumption_history/v2/projects", SdkClient.q("from", SdkClient.queryValue(from, "form", true), "to", SdkClient.queryValue(to, "form", true), "granularity", SdkClient.queryValue(granularity, "form", true), "org_id", SdkClient.queryValue(orgId, "form", true), "metrics", SdkClient.queryValue(metrics, "form", true), "cursor", SdkClient.queryValue(cursor, "form", true), "limit", SdkClient.queryValue(limit, "form", true), "project_ids", SdkClient.queryValue(projectIds, "form", true)), null, null, new TypeReference<ConsumptionHistoryPerProjectV2Response>(){}, "getConsumptionHistoryPerProjectV2", null, SdkClient.ResponseDecoder.JSON, options, java.util.Map.of("403", GeneralError.class, "404", GeneralError.class, "406", GeneralError.class, "429", GeneralError.class, "default", GeneralError.class)).data;
+        return SdkClient.request(clientConfig, "GET", "/consumption_history/v2/projects", SdkClient.q("from", SdkClient.queryValue(from, "form", true), "to", SdkClient.queryValue(to, "form", true), "granularity", SdkClient.queryValue(granularity, "form", true), "org_id", SdkClient.queryValue(orgId, "form", true), "metrics", SdkClient.queryValue(metrics, "form", true), "cursor", SdkClient.queryValue(cursor, "form", true), "limit", SdkClient.queryValue(limit, "form", true), "project_ids", SdkClient.queryValue(projectIds, "form", true)), null, null, new TypeReference<GetConsumptionHistoryPerProjectV2Response>(){}, "getConsumptionHistoryPerProjectV2", null, SdkClient.ResponseDecoder.JSON, options, java.util.Map.of("403", GeneralError.class, "404", GeneralError.class, "406", GeneralError.class, "429", GeneralError.class, "default", GeneralError.class)).data;
     }
 
 
@@ -219,14 +219,14 @@ public class Consumption {
     /**
      * Returns consumption metrics for each branch across one or more projects listed in `project_ids` (1 to 100 projects). Available for accounts on paid usage-based Launch, Scale, Agent, and Enterprise plans. History starts when the account first ingests branch-level consumption data. The `metrics` query parameter is required. Only these six values are supported on this endpoint: `compute_unit_seconds`, `root_branch_bytes_month`, `child_branch_bytes_month`, `instant_restore_bytes_month`, `public_network_transfer_bytes`, `private_network_transfer_bytes`. This endpoint does not support `extra_branches_month` or `snapshot_storage_bytes_month`. Use `GET /consumption_history/v2/projects` for those. Consumption metrics within each branch are returned in ascending time order (oldest first). This request does not wake project computes.
      */
-    public static ConsumptionHistoryPerBranchV2Response getConsumptionHistoryPerBranchV2(SdkConfig.ClientConfig clientConfig, GetConsumptionHistoryPerBranchV2Request request) {
+    public static GetConsumptionHistoryPerBranchV2Response getConsumptionHistoryPerBranchV2(SdkConfig.ClientConfig clientConfig, GetConsumptionHistoryPerBranchV2Request request) {
         return getConsumptionHistoryPerBranchV2(clientConfig, request, null);
     }
 
     /**
      * Returns consumption metrics for each branch across one or more projects listed in `project_ids` (1 to 100 projects). Available for accounts on paid usage-based Launch, Scale, Agent, and Enterprise plans. History starts when the account first ingests branch-level consumption data. The `metrics` query parameter is required. Only these six values are supported on this endpoint: `compute_unit_seconds`, `root_branch_bytes_month`, `child_branch_bytes_month`, `instant_restore_bytes_month`, `public_network_transfer_bytes`, `private_network_transfer_bytes`. This endpoint does not support `extra_branches_month` or `snapshot_storage_bytes_month`. Use `GET /consumption_history/v2/projects` for those. Consumption metrics within each branch are returned in ascending time order (oldest first). This request does not wake project computes.
      */
-    public static ConsumptionHistoryPerBranchV2Response getConsumptionHistoryPerBranchV2(SdkConfig.ClientConfig clientConfig, GetConsumptionHistoryPerBranchV2Request request, SdkConfig.RequestOptions options) {
+    public static GetConsumptionHistoryPerBranchV2Response getConsumptionHistoryPerBranchV2(SdkConfig.ClientConfig clientConfig, GetConsumptionHistoryPerBranchV2Request request, SdkConfig.RequestOptions options) {
         List<String> projectIds = request.getProjectIds();
         OffsetDateTime from = request.getFrom();
         OffsetDateTime to = request.getTo();
@@ -253,7 +253,7 @@ public class Consumption {
             { Validation.LengthOpts __i = new Validation.LengthOpts(); __i.min = 0; __i.max = 100; Validation.validateItems("branch_ids", branchIds, __i); }
         }
 
-        return SdkClient.request(clientConfig, "GET", "/consumption_history/v2/branches", SdkClient.q("project_ids", SdkClient.queryValue(projectIds, "form", true), "from", SdkClient.queryValue(from, "form", true), "to", SdkClient.queryValue(to, "form", true), "granularity", SdkClient.queryValue(granularity, "form", true), "org_id", SdkClient.queryValue(orgId, "form", true), "metrics", SdkClient.queryValue(metrics, "form", true), "cursor", SdkClient.queryValue(cursor, "form", true), "limit", SdkClient.queryValue(limit, "form", true), "branch_ids", SdkClient.queryValue(branchIds, "form", true)), null, null, new TypeReference<ConsumptionHistoryPerBranchV2Response>(){}, "getConsumptionHistoryPerBranchV2", null, SdkClient.ResponseDecoder.JSON, options, java.util.Map.of("403", GeneralError.class, "404", GeneralError.class, "406", GeneralError.class, "429", GeneralError.class, "default", GeneralError.class)).data;
+        return SdkClient.request(clientConfig, "GET", "/consumption_history/v2/branches", SdkClient.q("project_ids", SdkClient.queryValue(projectIds, "form", true), "from", SdkClient.queryValue(from, "form", true), "to", SdkClient.queryValue(to, "form", true), "granularity", SdkClient.queryValue(granularity, "form", true), "org_id", SdkClient.queryValue(orgId, "form", true), "metrics", SdkClient.queryValue(metrics, "form", true), "cursor", SdkClient.queryValue(cursor, "form", true), "limit", SdkClient.queryValue(limit, "form", true), "branch_ids", SdkClient.queryValue(branchIds, "form", true)), null, null, new TypeReference<GetConsumptionHistoryPerBranchV2Response>(){}, "getConsumptionHistoryPerBranchV2", null, SdkClient.ResponseDecoder.JSON, options, java.util.Map.of("403", GeneralError.class, "404", GeneralError.class, "406", GeneralError.class, "429", GeneralError.class, "default", GeneralError.class)).data;
     }
 
 

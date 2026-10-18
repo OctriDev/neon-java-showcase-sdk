@@ -5,6 +5,7 @@ package dev.octri.showcase.neon.models.project;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import dev.octri.showcase.neon.Validation;
+import dev.octri.showcase.neon.models.project_project.ProjectListItem;
 import java.util.List;
 import javax.annotation.Nullable;
 

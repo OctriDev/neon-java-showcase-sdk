@@ -4,6 +4,7 @@
 package dev.octri.showcase.neon.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import dev.octri.showcase.neon.Validation;
 import dev.octri.showcase.neon.models.shared_neon.NeonAuthEmailServerConfig;
 import dev.octri.showcase.neon.models.shared_neon.NeonAuthEmailServerConfigResponse;
 import javax.annotation.Nullable;
@@ -23,17 +24,27 @@ public final class SharedEmailServer implements NeonAuthEmailServerConfig, NeonA
      * Display name shown as the sender in outgoing emails.
      */
     @Nullable @JsonProperty("sender_name") public String senderName;
+    /**
+     * Optional enumerated value serialized in the `type` wire field.
+     */
+    @Nullable public SharedEmailServerTypeEnum type;
     private SharedEmailServer() {}
     public static Builder builder() { return new Builder(); }
     public static final class Builder {
         private String senderEmail;
         private String senderName;
+        private SharedEmailServerTypeEnum type;
         public Builder senderEmail(String value) { this.senderEmail = value; return this; }
         public Builder senderName(String value) { this.senderName = value; return this; }
+        public Builder type(SharedEmailServerTypeEnum value) { this.type = value; return this; }
         public SharedEmailServer build() {
             SharedEmailServer result = new SharedEmailServer();
             result.senderEmail = this.senderEmail;
             result.senderName = this.senderName;
+            if (this.type != null) {
+                Validation.validateEnum("type", this.type, java.util.Arrays.asList("shared"));
+            }
+            result.type = this.type;
             return result;
         }
     }
@@ -42,6 +53,7 @@ public final class SharedEmailServer implements NeonAuthEmailServerConfig, NeonA
         return "SharedEmailServer{"
             + "senderEmail=" + senderEmail
             + ", senderName=" + senderName
+            + ", type=" + type
             + "}";
     }
 }

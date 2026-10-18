@@ -4,6 +4,7 @@
 package dev.octri.showcase.neon.models.shared_standard;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import dev.octri.showcase.neon.Validation;
 import dev.octri.showcase.neon.models.shared_neon.NeonAuthEmailServerConfig;
 import javax.annotation.Nullable;
 
@@ -38,6 +39,10 @@ public final class StandardEmailServer implements NeonAuthEmailServerConfig {
      * Display name shown as the sender in outgoing emails.
      */
     @Nullable @JsonProperty("sender_name") public String senderName;
+    /**
+     * Optional enumerated value serialized in the `type` wire field.
+     */
+    @Nullable public StandardEmailServerTypeEnum type;
     private StandardEmailServer() {}
     public static Builder builder() { return new Builder(); }
     public static final class Builder {
@@ -47,12 +52,14 @@ public final class StandardEmailServer implements NeonAuthEmailServerConfig {
         private String password;
         private String senderEmail;
         private String senderName;
+        private StandardEmailServerTypeEnum type;
         public Builder host(String value) { this.host = value; return this; }
         public Builder port(Long value) { this.port = value; return this; }
         public Builder username(String value) { this.username = value; return this; }
         public Builder password(String value) { this.password = value; return this; }
         public Builder senderEmail(String value) { this.senderEmail = value; return this; }
         public Builder senderName(String value) { this.senderName = value; return this; }
+        public Builder type(StandardEmailServerTypeEnum value) { this.type = value; return this; }
         public StandardEmailServer build() {
             StandardEmailServer result = new StandardEmailServer();
             result.host = this.host;
@@ -61,6 +68,10 @@ public final class StandardEmailServer implements NeonAuthEmailServerConfig {
             result.password = this.password;
             result.senderEmail = this.senderEmail;
             result.senderName = this.senderName;
+            if (this.type != null) {
+                Validation.validateEnum("type", this.type, java.util.Arrays.asList("standard"));
+            }
+            result.type = this.type;
             return result;
         }
     }
@@ -73,6 +84,7 @@ public final class StandardEmailServer implements NeonAuthEmailServerConfig {
             + ", password=" + password
             + ", senderEmail=" + senderEmail
             + ", senderName=" + senderName
+            + ", type=" + type
             + "}";
     }
 }

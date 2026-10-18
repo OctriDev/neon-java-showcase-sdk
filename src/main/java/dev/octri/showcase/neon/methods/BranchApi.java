@@ -10,21 +10,22 @@ import dev.octri.showcase.neon.models.branch.BranchOperations;
 import dev.octri.showcase.neon.models.branch.BranchSchemaCompareResponse;
 import dev.octri.showcase.neon.models.branch.BranchSchemaResponse;
 import dev.octri.showcase.neon.models.branch.BranchesCountResponse;
+import dev.octri.showcase.neon.models.branch.CreateBranchResponse;
 import dev.octri.showcase.neon.models.branch.DatabaseOperations;
 import dev.octri.showcase.neon.models.branch.DatabaseResponse;
+import dev.octri.showcase.neon.models.branch.GetBranchResponse;
+import dev.octri.showcase.neon.models.branch.ListBranchResponse;
 import dev.octri.showcase.neon.models.branch.MaskingRule;
 import dev.octri.showcase.neon.models.branch.MaskingRulesResponse;
 import dev.octri.showcase.neon.models.branch.RoleOperations;
 import dev.octri.showcase.neon.models.branch.RolePasswordResponse;
 import dev.octri.showcase.neon.models.branch.RoleResponse;
 import dev.octri.showcase.neon.models.logs.ProjectBranchLogsQueryRequestSortOrderEnum;
-import dev.octri.showcase.neon.models.shared.BranchesResponse;
 import dev.octri.showcase.neon.models.shared.DatabasesResponse;
 import dev.octri.showcase.neon.models.shared.EndpointsResponse;
 import dev.octri.showcase.neon.models.shared.GeneralError;
 import dev.octri.showcase.neon.models.shared.OperationsResponse;
 import dev.octri.showcase.neon.models.shared.RolesResponse;
-import dev.octri.showcase.neon.models.shared_branch.BranchResponse;
 import dev.octri.showcase.neon.SdkConfig;
 import dev.octri.showcase.neon.SdkClient;
 import dev.octri.showcase.neon.Validation;
@@ -176,20 +177,20 @@ public class BranchApi {
     /**
      * Creates a branch in the specified project. No request body is required, but you can specify one to create a compute endpoint or select a non-default parent branch. By default, the branch is created from the project's default branch with no compute endpoint, and the branch name is auto-generated. To access the branch, add a `read_write` endpoint. Each branch supports one read-write endpoint and multiple read-only endpoints. For related information, see [Manage branches](https://neon.com/docs/manage/branches/).
      */
-    public static BranchResponse createBranch(SdkConfig.ClientConfig clientConfig, CreateBranchRequest request) {
+    public static CreateBranchResponse createBranch(SdkConfig.ClientConfig clientConfig, CreateBranchRequest request) {
         return createBranch(clientConfig, request, null);
     }
 
     /**
      * Creates a branch in the specified project. No request body is required, but you can specify one to create a compute endpoint or select a non-default parent branch. By default, the branch is created from the project's default branch with no compute endpoint, and the branch name is auto-generated. To access the branch, add a `read_write` endpoint. Each branch supports one read-write endpoint and multiple read-only endpoints. For related information, see [Manage branches](https://neon.com/docs/manage/branches/).
      */
-    public static BranchResponse createBranch(SdkConfig.ClientConfig clientConfig, CreateBranchRequest request, SdkConfig.RequestOptions options) {
+    public static CreateBranchResponse createBranch(SdkConfig.ClientConfig clientConfig, CreateBranchRequest request, SdkConfig.RequestOptions options) {
         String projectId = request.getProjectId();
         BranchCreateRequest body = request.getBody();
 
         Validation.validatePattern("project_id", projectId, "^[a-z0-9-]{1,60}$");
 
-        return SdkClient.request(clientConfig, "POST", "/projects/" + SdkClient.encodePathSegment(projectId) + "/branches", null, body, null, new TypeReference<BranchResponse>(){}, "createBranch", null, SdkClient.ResponseDecoder.JSON, options, java.util.Map.of("default", GeneralError.class)).data;
+        return SdkClient.request(clientConfig, "POST", "/projects/" + SdkClient.encodePathSegment(projectId) + "/branches", null, body, null, new TypeReference<CreateBranchResponse>(){}, "createBranch", null, SdkClient.ResponseDecoder.JSON, options, java.util.Map.of("default", GeneralError.class)).data;
     }
 
 
@@ -231,14 +232,14 @@ public class BranchApi {
     /**
      * Retrieves a list of branches for the specified project. Each Neon project has a root branch named `main`. A `branch_id` value has a `br-` prefix. A project may contain child branches that were branched from `main` or from another branch. A parent branch is identified by the `parent_id` value, which is the `id` of the parent branch. For related information, see [Manage branches](https://neon.com/docs/manage/branches/).
      */
-    public static BranchesResponse listBranch(SdkConfig.ClientConfig clientConfig, ListBranchRequest request) {
+    public static ListBranchResponse listBranch(SdkConfig.ClientConfig clientConfig, ListBranchRequest request) {
         return listBranch(clientConfig, request, null);
     }
 
     /**
      * Retrieves a list of branches for the specified project. Each Neon project has a root branch named `main`. A `branch_id` value has a `br-` prefix. A project may contain child branches that were branched from `main` or from another branch. A parent branch is identified by the `parent_id` value, which is the `id` of the parent branch. For related information, see [Manage branches](https://neon.com/docs/manage/branches/).
      */
-    public static BranchesResponse listBranch(SdkConfig.ClientConfig clientConfig, ListBranchRequest request, SdkConfig.RequestOptions options) {
+    public static ListBranchResponse listBranch(SdkConfig.ClientConfig clientConfig, ListBranchRequest request, SdkConfig.RequestOptions options) {
         String projectId = request.getProjectId();
         String search = request.getSearch();
         ListBranchSortBy sortBy = request.getSortBy();
@@ -253,7 +254,7 @@ public class BranchApi {
             { Validation.RangeOpts __r = new Validation.RangeOpts(); __r.min = 1d; __r.max = 10000d; Validation.validateRange("limit", limit, __r); }
         }
 
-        return SdkClient.request(clientConfig, "GET", "/projects/" + SdkClient.encodePathSegment(projectId) + "/branches", SdkClient.q("search", SdkClient.queryValue(search, "form", true), "sort_by", SdkClient.queryValue(sortBy, "form", true), "cursor", SdkClient.queryValue(cursor, "form", true), "sort_order", SdkClient.queryValue(sortOrder, "form", true), "limit", SdkClient.queryValue(limit, "form", true), "include_deleted", SdkClient.queryValue(includeDeleted, "form", true)), null, null, new TypeReference<BranchesResponse>(){}, "listBranch", null, SdkClient.ResponseDecoder.JSON, options, java.util.Map.of("default", GeneralError.class)).data;
+        return SdkClient.request(clientConfig, "GET", "/projects/" + SdkClient.encodePathSegment(projectId) + "/branches", SdkClient.q("search", SdkClient.queryValue(search, "form", true), "sort_by", SdkClient.queryValue(sortBy, "form", true), "cursor", SdkClient.queryValue(cursor, "form", true), "sort_order", SdkClient.queryValue(sortOrder, "form", true), "limit", SdkClient.queryValue(limit, "form", true), "include_deleted", SdkClient.queryValue(includeDeleted, "form", true)), null, null, new TypeReference<ListBranchResponse>(){}, "listBranch", null, SdkClient.ResponseDecoder.JSON, options, java.util.Map.of("default", GeneralError.class)).data;
     }
 
 
@@ -282,7 +283,7 @@ public class BranchApi {
      *
      * Creates a new branch with anonymized data using PostgreSQL Anonymizer for static masking. This allows developers to work with masked production data. Optionally, provide `masking_rules` to set initial masking rules for the branch and `start_anonymization` to automatically start anonymization after creation. This combines functionality of updating masking rules and starting anonymization into the branch creation request. **Note**: This endpoint is currently in Beta.
      */
-    public static BranchResponse createBranchAnonymized(SdkConfig.ClientConfig clientConfig, CreateBranchAnonymizedRequest request) {
+    public static CreateBranchResponse createBranchAnonymized(SdkConfig.ClientConfig clientConfig, CreateBranchAnonymizedRequest request) {
         return createBranchAnonymized(clientConfig, request, null);
     }
 
@@ -291,13 +292,13 @@ public class BranchApi {
      *
      * Creates a new branch with anonymized data using PostgreSQL Anonymizer for static masking. This allows developers to work with masked production data. Optionally, provide `masking_rules` to set initial masking rules for the branch and `start_anonymization` to automatically start anonymization after creation. This combines functionality of updating masking rules and starting anonymization into the branch creation request. **Note**: This endpoint is currently in Beta.
      */
-    public static BranchResponse createBranchAnonymized(SdkConfig.ClientConfig clientConfig, CreateBranchAnonymizedRequest request, SdkConfig.RequestOptions options) {
+    public static CreateBranchResponse createBranchAnonymized(SdkConfig.ClientConfig clientConfig, CreateBranchAnonymizedRequest request, SdkConfig.RequestOptions options) {
         String projectId = request.getProjectId();
         BranchAnonymizedCreateRequest body = request.getBody();
 
         Validation.validatePattern("project_id", projectId, "^[a-z0-9-]{1,60}$");
 
-        return SdkClient.request(clientConfig, "POST", "/projects/" + SdkClient.encodePathSegment(projectId) + "/branch_anonymized", null, body, null, new TypeReference<BranchResponse>(){}, "createBranchAnonymized", null, SdkClient.ResponseDecoder.JSON, options, java.util.Map.of("default", GeneralError.class)).data;
+        return SdkClient.request(clientConfig, "POST", "/projects/" + SdkClient.encodePathSegment(projectId) + "/branch_anonymized", null, body, null, new TypeReference<CreateBranchResponse>(){}, "createBranchAnonymized", null, SdkClient.ResponseDecoder.JSON, options, java.util.Map.of("default", GeneralError.class)).data;
     }
 
 
@@ -364,14 +365,14 @@ public class BranchApi {
     /**
      * Retrieves information about the specified branch. A `branch_id` value has a `br-` prefix. Each Neon project is initially created with a root and default branch named `main`. A project can contain one or more branches. A parent branch is identified by a `parent_id` value, which is the `id` of the parent branch. For related information, see [Manage branches](https://neon.com/docs/manage/branches/).
      */
-    public static BranchResponse getBranch(SdkConfig.ClientConfig clientConfig, GetBranchRequest request) {
+    public static GetBranchResponse getBranch(SdkConfig.ClientConfig clientConfig, GetBranchRequest request) {
         return getBranch(clientConfig, request, null);
     }
 
     /**
      * Retrieves information about the specified branch. A `branch_id` value has a `br-` prefix. Each Neon project is initially created with a root and default branch named `main`. A project can contain one or more branches. A parent branch is identified by a `parent_id` value, which is the `id` of the parent branch. For related information, see [Manage branches](https://neon.com/docs/manage/branches/).
      */
-    public static BranchResponse getBranch(SdkConfig.ClientConfig clientConfig, GetBranchRequest request, SdkConfig.RequestOptions options) {
+    public static GetBranchResponse getBranch(SdkConfig.ClientConfig clientConfig, GetBranchRequest request, SdkConfig.RequestOptions options) {
         String projectId = request.getProjectId();
         String branchId = request.getBranchId();
 
@@ -379,7 +380,7 @@ public class BranchApi {
 
         Validation.validatePattern("branch_id", branchId, "^[a-z0-9-]{1,60}$");
 
-        return SdkClient.request(clientConfig, "GET", "/projects/" + SdkClient.encodePathSegment(projectId) + "/branches/" + SdkClient.encodePathSegment(branchId) + "", null, null, null, new TypeReference<BranchResponse>(){}, "getBranch", null, SdkClient.ResponseDecoder.JSON, options, java.util.Map.of("default", GeneralError.class)).data;
+        return SdkClient.request(clientConfig, "GET", "/projects/" + SdkClient.encodePathSegment(projectId) + "/branches/" + SdkClient.encodePathSegment(branchId) + "", null, null, null, new TypeReference<GetBranchResponse>(){}, "getBranch", null, SdkClient.ResponseDecoder.JSON, options, java.util.Map.of("default", GeneralError.class)).data;
     }
 
 

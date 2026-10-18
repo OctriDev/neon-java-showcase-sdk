@@ -4,6 +4,7 @@
 package dev.octri.showcase.neon.models.project;
 
 import dev.octri.showcase.neon.Validation;
+import dev.octri.showcase.neon.models.project_project.ProjectRole;
 
 /**
  * SetProjectMemberRoleRequest.

@@ -100,7 +100,7 @@ Pagination follows the cursor, offset, page-number, or next-URL contract declare
 ## Project layout and API discovery
 
 - Operation implementations are grouped under `src/main/java/dev/octri/showcase/neon/methods/`.
-- 304 component models are split by API domain under `src/main/java/dev/octri/showcase/neon/models/<domain>/<Type>.java` or `models/<tag path>/<Type>.java`.
+- 319 component models are split by API domain under `src/main/java/dev/octri/showcase/neon/models/<domain>/<Type>.java` or `models/<tag path>/<Type>.java`.
 - Component schemas can choose a nested model folder with `x-octri-sdk-tags: ["Billing/Invoices"]`; the first tag owns the model and `/` creates nesting. This specification assigns 13 models explicitly.
 - [`sdk-manifest.json`](sdk-manifest.json) is the language-neutral public API index: operations, request/response modes, model properties, enum values, and generation settings.
 - Models are public from their domain packages; import them as `dev.octri.showcase.neon.models.<domain>.<Type>`.
