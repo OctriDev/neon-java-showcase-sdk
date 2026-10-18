@@ -4,11 +4,11 @@
 package dev.octri.showcase.neon.methods;
 
 import dev.octri.showcase.neon.models.functions.CustomDomain;
-import dev.octri.showcase.neon.models.functions.CustomDomainsListResponse;
 import dev.octri.showcase.neon.models.functions.FunctionDeployRequestRuntimeEnum;
+import dev.octri.showcase.neon.models.functions.ListFunctionsCustomDomainsResponse;
+import dev.octri.showcase.neon.models.functions.ListFunctionsResponse;
 import dev.octri.showcase.neon.models.functions.NeonFunctionDeploymentResponse;
 import dev.octri.showcase.neon.models.functions.NeonFunctionResponse;
-import dev.octri.showcase.neon.models.functions.NeonFunctionsListResponse;
 import dev.octri.showcase.neon.models.functions.TriggerCreateRequest;
 import dev.octri.showcase.neon.models.functions.TriggerID;
 import dev.octri.showcase.neon.models.functions.TriggerResponse;
@@ -50,14 +50,14 @@ public class Functions {
     /**
      * Lists functions on the specified branch. **Note**: This endpoint is currently in Beta.
      */
-    public static NeonFunctionsListResponse listFunctions(SdkConfig.ClientConfig clientConfig, ListFunctionsRequest request) {
+    public static ListFunctionsResponse listFunctions(SdkConfig.ClientConfig clientConfig, ListFunctionsRequest request) {
         return listFunctions(clientConfig, request, null);
     }
 
     /**
      * Lists functions on the specified branch. **Note**: This endpoint is currently in Beta.
      */
-    public static NeonFunctionsListResponse listFunctions(SdkConfig.ClientConfig clientConfig, ListFunctionsRequest request, SdkConfig.RequestOptions options) {
+    public static ListFunctionsResponse listFunctions(SdkConfig.ClientConfig clientConfig, ListFunctionsRequest request, SdkConfig.RequestOptions options) {
         String projectId = request.getProjectId();
         String branchId = request.getBranchId();
         String cursor = request.getCursor();
@@ -71,7 +71,7 @@ public class Functions {
             { Validation.RangeOpts __r = new Validation.RangeOpts(); __r.min = 1d; __r.max = 1000d; Validation.validateRange("limit", limit, __r); }
         }
 
-        return SdkClient.request(clientConfig, "GET", "/projects/" + SdkClient.encodePathSegment(projectId) + "/branches/" + SdkClient.encodePathSegment(branchId) + "/functions", SdkClient.q("cursor", SdkClient.queryValue(cursor, "form", true), "limit", SdkClient.queryValue(limit, "form", true)), null, null, new TypeReference<NeonFunctionsListResponse>(){}, "listFunctions", null, SdkClient.ResponseDecoder.JSON, options, java.util.Map.of("default", GeneralError.class)).data;
+        return SdkClient.request(clientConfig, "GET", "/projects/" + SdkClient.encodePathSegment(projectId) + "/branches/" + SdkClient.encodePathSegment(branchId) + "/functions", SdkClient.q("cursor", SdkClient.queryValue(cursor, "form", true), "limit", SdkClient.queryValue(limit, "form", true)), null, null, new TypeReference<ListFunctionsResponse>(){}, "listFunctions", null, SdkClient.ResponseDecoder.JSON, options, java.util.Map.of("default", GeneralError.class)).data;
     }
 
 
@@ -625,14 +625,14 @@ public class Functions {
     /**
      * Lists all custom domains registered on the branch, across every target entity. **Note**: This endpoint is currently in Beta.
      */
-    public static CustomDomainsListResponse listFunctionsCustomDomains(SdkConfig.ClientConfig clientConfig, ListFunctionsCustomDomainsRequest request) {
+    public static ListFunctionsCustomDomainsResponse listFunctionsCustomDomains(SdkConfig.ClientConfig clientConfig, ListFunctionsCustomDomainsRequest request) {
         return listFunctionsCustomDomains(clientConfig, request, null);
     }
 
     /**
      * Lists all custom domains registered on the branch, across every target entity. **Note**: This endpoint is currently in Beta.
      */
-    public static CustomDomainsListResponse listFunctionsCustomDomains(SdkConfig.ClientConfig clientConfig, ListFunctionsCustomDomainsRequest request, SdkConfig.RequestOptions options) {
+    public static ListFunctionsCustomDomainsResponse listFunctionsCustomDomains(SdkConfig.ClientConfig clientConfig, ListFunctionsCustomDomainsRequest request, SdkConfig.RequestOptions options) {
         String projectId = request.getProjectId();
         String branchId = request.getBranchId();
         String cursor = request.getCursor();
@@ -646,7 +646,7 @@ public class Functions {
             { Validation.RangeOpts __r = new Validation.RangeOpts(); __r.min = 1d; __r.max = 1000d; Validation.validateRange("limit", limit, __r); }
         }
 
-        return SdkClient.request(clientConfig, "GET", "/projects/" + SdkClient.encodePathSegment(projectId) + "/branches/" + SdkClient.encodePathSegment(branchId) + "/custom-domains", SdkClient.q("cursor", SdkClient.queryValue(cursor, "form", true), "limit", SdkClient.queryValue(limit, "form", true)), null, null, new TypeReference<CustomDomainsListResponse>(){}, "listFunctionsCustomDomains", null, SdkClient.ResponseDecoder.JSON, options, java.util.Map.of("default", GeneralError.class)).data;
+        return SdkClient.request(clientConfig, "GET", "/projects/" + SdkClient.encodePathSegment(projectId) + "/branches/" + SdkClient.encodePathSegment(branchId) + "/custom-domains", SdkClient.q("cursor", SdkClient.queryValue(cursor, "form", true), "limit", SdkClient.queryValue(limit, "form", true)), null, null, new TypeReference<ListFunctionsCustomDomainsResponse>(){}, "listFunctionsCustomDomains", null, SdkClient.ResponseDecoder.JSON, options, java.util.Map.of("default", GeneralError.class)).data;
     }
 
 

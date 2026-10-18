@@ -258,6 +258,7 @@ public class Buckets {
             for (BucketObject _item : _items) {
                 if (!yield.test(_item)) { return; }
             }
+            if (!_page.isTruncated) { return; }
             Object _next = _page.nextCursor;
             if (_next == null) { return; }
             _cursor = (String) _next;
@@ -296,7 +297,7 @@ public class Buckets {
             List<BucketObject> _items = _page.objects;
             if (_items == null || _items.isEmpty()) { return; }
             Object _next = _page.nextCursor;
-            boolean _hasMore = _next != null;
+            boolean _hasMore = _page.isTruncated && _next != null;
             if (!yieldPage.test(new ListBucketsObjectsPage(_page, _items, _hasMore))) { return; }
             if (!_hasMore) { return; }
             _cursor = (String) _next;

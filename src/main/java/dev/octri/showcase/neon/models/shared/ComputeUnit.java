@@ -11,7 +11,8 @@ package dev.octri.showcase.neon.models.shared;
 public class ComputeUnit {
     @com.fasterxml.jackson.annotation.JsonValue public Double value;
     public ComputeUnit() {}
-    @com.fasterxml.jackson.annotation.JsonCreator(mode = com.fasterxml.jackson.annotation.JsonCreator.Mode.DELEGATING)
     public ComputeUnit(Double value) { this.value = value; }
+    @com.fasterxml.jackson.annotation.JsonCreator(mode = com.fasterxml.jackson.annotation.JsonCreator.Mode.DELEGATING)
+    static ComputeUnit fromJson(Number value) { return new ComputeUnit(value.doubleValue()); }
     @java.lang.Override public String toString() { return String.valueOf(value); }
 }

@@ -3,9 +3,9 @@
 
 package dev.octri.showcase.neon.methods;
 
+import dev.octri.showcase.neon.models.operation.ListOperationResponse;
 import dev.octri.showcase.neon.models.operation.OperationResponse;
 import dev.octri.showcase.neon.models.shared.GeneralError;
-import dev.octri.showcase.neon.models.shared.OperationsResponse;
 import dev.octri.showcase.neon.SdkConfig;
 import dev.octri.showcase.neon.SdkClient;
 import dev.octri.showcase.neon.Validation;
@@ -80,14 +80,14 @@ public class OperationApi {
     /**
      * Retrieves a list of operations for the specified Neon project. The number of operations returned can be large. To paginate the response, issue an initial request with a `limit` value. Then, add the `cursor` value that was returned in the response to the next request. Operations older than 6 months may be deleted from our systems. If you need more history than that, you should store your own history.
      */
-    public static OperationsResponse listOperation(SdkConfig.ClientConfig clientConfig, ListOperationRequest request) {
+    public static ListOperationResponse listOperation(SdkConfig.ClientConfig clientConfig, ListOperationRequest request) {
         return listOperation(clientConfig, request, null);
     }
 
     /**
      * Retrieves a list of operations for the specified Neon project. The number of operations returned can be large. To paginate the response, issue an initial request with a `limit` value. Then, add the `cursor` value that was returned in the response to the next request. Operations older than 6 months may be deleted from our systems. If you need more history than that, you should store your own history.
      */
-    public static OperationsResponse listOperation(SdkConfig.ClientConfig clientConfig, ListOperationRequest request, SdkConfig.RequestOptions options) {
+    public static ListOperationResponse listOperation(SdkConfig.ClientConfig clientConfig, ListOperationRequest request, SdkConfig.RequestOptions options) {
         String projectId = request.getProjectId();
         String cursor = request.getCursor();
         Long limit = request.getLimit();
@@ -98,7 +98,7 @@ public class OperationApi {
             { Validation.RangeOpts __r = new Validation.RangeOpts(); __r.min = 1d; __r.max = 1000d; Validation.validateRange("limit", limit, __r); }
         }
 
-        return SdkClient.request(clientConfig, "GET", "/projects/" + SdkClient.encodePathSegment(projectId) + "/operations", SdkClient.q("cursor", SdkClient.queryValue(cursor, "form", true), "limit", SdkClient.queryValue(limit, "form", true)), null, null, new TypeReference<OperationsResponse>(){}, "listOperation", null, SdkClient.ResponseDecoder.JSON, options, java.util.Map.of("default", GeneralError.class)).data;
+        return SdkClient.request(clientConfig, "GET", "/projects/" + SdkClient.encodePathSegment(projectId) + "/operations", SdkClient.q("cursor", SdkClient.queryValue(cursor, "form", true), "limit", SdkClient.queryValue(limit, "form", true)), null, null, new TypeReference<ListOperationResponse>(){}, "listOperation", null, SdkClient.ResponseDecoder.JSON, options, java.util.Map.of("default", GeneralError.class)).data;
     }
 
 

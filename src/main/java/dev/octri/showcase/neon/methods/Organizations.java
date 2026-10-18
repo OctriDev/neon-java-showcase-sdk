@@ -4,6 +4,7 @@
 package dev.octri.showcase.neon.methods;
 
 import dev.octri.showcase.neon.models.logs.ProjectBranchLogsQueryRequestSortOrderEnum;
+import dev.octri.showcase.neon.models.organizations.ListOrganizationsMembersResponse;
 import dev.octri.showcase.neon.models.organizations.Member;
 import dev.octri.showcase.neon.models.organizations.MemberRole;
 import dev.octri.showcase.neon.models.organizations.OrgApiKeyCreateRequest;
@@ -12,7 +13,6 @@ import dev.octri.showcase.neon.models.organizations.OrgApiKeyRevokeResponse;
 import dev.octri.showcase.neon.models.organizations.OrgApiKeysListResponseItem;
 import dev.octri.showcase.neon.models.organizations.OrganizationInvitationsResponse;
 import dev.octri.showcase.neon.models.organizations.OrganizationInviteCreateRequest;
-import dev.octri.showcase.neon.models.organizations.OrganizationMembersResponse;
 import dev.octri.showcase.neon.models.organizations.SpendingLimitResponse;
 import dev.octri.showcase.neon.models.organizations.VPCEndpointDetails;
 import dev.octri.showcase.neon.models.organizations.VPCEndpointsWithRegionResponse;
@@ -348,14 +348,14 @@ public class Organizations {
     /**
      * Retrieves a paginated list of members for the specified organization.
      */
-    public static OrganizationMembersResponse listOrganizationsMembers(SdkConfig.ClientConfig clientConfig, ListOrganizationsMembersRequest request) {
+    public static ListOrganizationsMembersResponse listOrganizationsMembers(SdkConfig.ClientConfig clientConfig, ListOrganizationsMembersRequest request) {
         return listOrganizationsMembers(clientConfig, request, null);
     }
 
     /**
      * Retrieves a paginated list of members for the specified organization.
      */
-    public static OrganizationMembersResponse listOrganizationsMembers(SdkConfig.ClientConfig clientConfig, ListOrganizationsMembersRequest request, SdkConfig.RequestOptions options) {
+    public static ListOrganizationsMembersResponse listOrganizationsMembers(SdkConfig.ClientConfig clientConfig, ListOrganizationsMembersRequest request, SdkConfig.RequestOptions options) {
         String orgId = request.getOrgId();
         ListOrganizationsMembersSortBy sortBy = request.getSortBy();
         String cursor = request.getCursor();
@@ -368,7 +368,7 @@ public class Organizations {
             { Validation.RangeOpts __r = new Validation.RangeOpts(); __r.min = 1d; __r.max = 500d; Validation.validateRange("limit", limit, __r); }
         }
 
-        return SdkClient.request(clientConfig, "GET", "/organizations/" + SdkClient.encodePathSegment(orgId) + "/members", SdkClient.q("sort_by", SdkClient.queryValue(sortBy, "form", true), "cursor", SdkClient.queryValue(cursor, "form", true), "sort_order", SdkClient.queryValue(sortOrder, "form", true), "limit", SdkClient.queryValue(limit, "form", true)), null, null, new TypeReference<OrganizationMembersResponse>(){}, "listOrganizationsMembers", null, SdkClient.ResponseDecoder.JSON, options, java.util.Map.of("default", GeneralError.class)).data;
+        return SdkClient.request(clientConfig, "GET", "/organizations/" + SdkClient.encodePathSegment(orgId) + "/members", SdkClient.q("sort_by", SdkClient.queryValue(sortBy, "form", true), "cursor", SdkClient.queryValue(cursor, "form", true), "sort_order", SdkClient.queryValue(sortOrder, "form", true), "limit", SdkClient.queryValue(limit, "form", true)), null, null, new TypeReference<ListOrganizationsMembersResponse>(){}, "listOrganizationsMembers", null, SdkClient.ResponseDecoder.JSON, options, java.util.Map.of("default", GeneralError.class)).data;
     }
 
 
