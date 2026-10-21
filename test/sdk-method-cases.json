@@ -223,7 +223,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthOauthProvidersOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -267,7 +267,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthOauthProvidersOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -311,7 +311,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthDomainsOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -344,7 +344,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthDomainsOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -856,7 +856,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -898,7 +898,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -1163,7 +1163,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart2",
+      "owner": "dev.octri.showcase.neon.methods.AuthOauthProviderOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -1223,7 +1223,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart2",
+      "owner": "dev.octri.showcase.neon.methods.AuthOauthProviderOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -1274,7 +1274,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthUsersOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -1309,7 +1309,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthUsersOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -3334,7 +3334,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart2",
+      "owner": "dev.octri.showcase.neon.methods.AuthOauthProviderOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -3364,7 +3364,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart2",
+      "owner": "dev.octri.showcase.neon.methods.AuthOauthProviderOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -3399,7 +3399,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthOauthProvidersOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -3429,7 +3429,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthOauthProvidersOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -3464,7 +3464,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthDomainsOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -3501,7 +3501,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthDomainsOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -3543,7 +3543,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthUsersOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -3573,7 +3573,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthUsersOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -4880,7 +4880,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -4910,7 +4910,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -5350,7 +5350,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a"
@@ -5388,7 +5388,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a"
@@ -5420,7 +5420,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthAllowLocalhostOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a"
@@ -5449,7 +5449,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthAllowLocalhostOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a"
@@ -5526,7 +5526,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthEmailAndPasswordOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a"
@@ -5561,7 +5561,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthEmailAndPasswordOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a"
@@ -5593,7 +5593,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthEmailProviderOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a"
@@ -5628,7 +5628,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthEmailProviderOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a"
@@ -5721,7 +5721,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart2",
+      "owner": "dev.octri.showcase.neon.methods.AuthOauthProviderOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -5764,7 +5764,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart2",
+      "owner": "dev.octri.showcase.neon.methods.AuthOauthProviderOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -5799,7 +5799,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthPluginsOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a"
@@ -5839,7 +5839,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthPluginsOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a"
@@ -5871,7 +5871,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthPluginsOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a"
@@ -5901,7 +5901,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthPluginsOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a"
@@ -5933,7 +5933,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthPluginsOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a"
@@ -6018,7 +6018,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthPluginsOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a"
@@ -6050,7 +6050,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart2",
+      "owner": "dev.octri.showcase.neon.methods.AuthWebhooksOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a"
@@ -6084,7 +6084,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart2",
+      "owner": "dev.octri.showcase.neon.methods.AuthWebhooksOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a"
@@ -8915,7 +8915,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart2",
+      "owner": "dev.octri.showcase.neon.methods.AuthOauthProviderOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a"
@@ -8959,7 +8959,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart2",
+      "owner": "dev.octri.showcase.neon.methods.AuthOauthProviderOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a"
@@ -8991,7 +8991,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthOauthProvidersOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a"
@@ -9027,7 +9027,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthOauthProvidersOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a"
@@ -9059,7 +9059,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthDomainsOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a"
@@ -9093,7 +9093,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthDomainsOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a"
@@ -12730,7 +12730,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart2",
+      "owner": "dev.octri.showcase.neon.methods.AuthOauthProviderOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -12763,7 +12763,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart2",
+      "owner": "dev.octri.showcase.neon.methods.AuthOauthProviderOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -12935,7 +12935,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthEmailProviderOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -12968,7 +12968,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthEmailProviderOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -13003,7 +13003,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthSendTestEmailOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -13054,7 +13054,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthSendTestEmailOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -13895,7 +13895,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthAllowLocalhostOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -13927,7 +13927,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthAllowLocalhostOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -13962,7 +13962,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthConfigOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -13994,7 +13994,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthConfigOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -14029,7 +14029,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthEmailAndPasswordOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -14085,7 +14085,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthEmailAndPasswordOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -14138,7 +14138,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthEmailProviderOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -14184,7 +14184,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthEmailProviderOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -14392,7 +14392,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthPluginsOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -14432,7 +14432,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthPluginsOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -14473,7 +14473,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart2",
+      "owner": "dev.octri.showcase.neon.methods.AuthOauthProviderOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -14535,7 +14535,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart2",
+      "owner": "dev.octri.showcase.neon.methods.AuthOauthProviderOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -14589,7 +14589,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthOauthProvidersOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -14633,7 +14633,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthOauthProvidersOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -14677,7 +14677,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthPluginsOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -14739,7 +14739,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthPluginsOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -14793,7 +14793,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthPluginsOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -14841,7 +14841,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthPluginsOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -14888,7 +14888,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthPluginsOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -14924,7 +14924,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthPluginsOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -14962,7 +14962,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthUsersOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -14999,7 +14999,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart1",
+      "owner": "dev.octri.showcase.neon.methods.AuthUsersOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -15039,7 +15039,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart2",
+      "owner": "dev.octri.showcase.neon.methods.AuthWebhooksOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -15087,7 +15087,7 @@
         "auth"
       ],
       "mode": "normal",
-      "owner": "dev.octri.showcase.neon.methods.AuthPart2",
+      "owner": "dev.octri.showcase.neon.methods.AuthWebhooksOperations",
       "arguments": {
         "projectId": "a",
         "branchId": "a",
@@ -15648,9 +15648,9 @@
       }
     },
     {
-      "id": "updateFunctionsTrigger:updateFunctionsTrigger",
-      "operationId": "updateFunctionsTrigger",
-      "methodName": "updateFunctionsTrigger",
+      "id": "updateFunctionTrigger:updateFunctionTrigger",
+      "operationId": "updateFunctionTrigger",
+      "methodName": "updateFunctionTrigger",
       "namespace": [
         "functions"
       ],
@@ -15705,9 +15705,9 @@
       }
     },
     {
-      "id": "updateFunctionsTrigger:updateFunctionsTrigger:418",
-      "operationId": "updateFunctionsTrigger",
-      "methodName": "updateFunctionsTrigger",
+      "id": "updateFunctionTrigger:updateFunctionTrigger:418",
+      "operationId": "updateFunctionTrigger",
+      "methodName": "updateFunctionTrigger",
       "namespace": [
         "functions"
       ],

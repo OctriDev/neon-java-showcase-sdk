@@ -15,7 +15,7 @@ import dev.octri.showcase.neon.models.shared_neon.NeonAuthOauthProviderId;
 import dev.octri.showcase.neon.models.shared_neon.NeonAuthSupportedAuthProvider;
 import java.util.List;
 
-public class Auth extends AuthPart2 {
+public class Auth extends AuthWebhooksOperations {
 
     public static class GetAuthRequest {
 

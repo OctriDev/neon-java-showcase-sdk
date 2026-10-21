@@ -3162,8 +3162,8 @@ public class Neon {
          *
          * Applies a partial update. The required `type` discriminator must identify the existing trigger kind. The supported types are `schedule` and `storage_object_created`. Editing an inherited trigger creates a child-local shadow with the same `trigger_id`; it remains disabled unless this request explicitly enables it. For a schedule trigger, updating the schedule or enabled state increments `version` and recomputes `next_run_at`. Disabling stops future scheduling but does not cancel occurrences already committed for delivery. For `storage_object_created`, the configuration selects one exact bucket. An omitted object-key prefix matches every key in that bucket; a present prefix is matched byte-for-byte and case-sensitively against the full key, without path normalization or a path-segment boundary. **Note**: This endpoint is currently in Beta.
          */
-        public TriggerResponse updateTrigger(Functions.UpdateFunctionsTriggerRequest request) {
-            return Functions.updateFunctionsTrigger(this.clientConfig, request);
+        public TriggerResponse updateTrigger(Functions.UpdateFunctionTriggerRequest request) {
+            return Functions.updateFunctionTrigger(this.clientConfig, request);
         }
 
         /**
@@ -3171,8 +3171,8 @@ public class Neon {
          *
          * Applies a partial update. The required `type` discriminator must identify the existing trigger kind. The supported types are `schedule` and `storage_object_created`. Editing an inherited trigger creates a child-local shadow with the same `trigger_id`; it remains disabled unless this request explicitly enables it. For a schedule trigger, updating the schedule or enabled state increments `version` and recomputes `next_run_at`. Disabling stops future scheduling but does not cancel occurrences already committed for delivery. For `storage_object_created`, the configuration selects one exact bucket. An omitted object-key prefix matches every key in that bucket; a present prefix is matched byte-for-byte and case-sensitively against the full key, without path normalization or a path-segment boundary. **Note**: This endpoint is currently in Beta.
          */
-        public TriggerResponse updateTrigger(Functions.UpdateFunctionsTriggerRequest request, SdkConfig.RequestOptions options) {
-            return Functions.updateFunctionsTrigger(this.clientConfig, request, options);
+        public TriggerResponse updateTrigger(Functions.UpdateFunctionTriggerRequest request, SdkConfig.RequestOptions options) {
+            return Functions.updateFunctionTrigger(this.clientConfig, request, options);
         }
 
         /**

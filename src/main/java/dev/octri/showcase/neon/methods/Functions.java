@@ -431,24 +431,24 @@ public class Functions {
 
 
 
-    public static class UpdateFunctionsTriggerRequest {
+    public static class UpdateFunctionTriggerRequest {
 
         private String projectId;
         private String branchId;
         private TriggerID triggerId;
         private TriggerUpdateRequest body;
 
-        private UpdateFunctionsTriggerRequest() {}
+        private UpdateFunctionTriggerRequest() {}
 
         public static Builder builder() { return new Builder(); }
 
         public static class Builder {
-            private final UpdateFunctionsTriggerRequest request = new UpdateFunctionsTriggerRequest();
+            private final UpdateFunctionTriggerRequest request = new UpdateFunctionTriggerRequest();
             public Builder projectId(String val) { request.projectId = val; return this; }
             public Builder branchId(String val) { request.branchId = val; return this; }
             public Builder triggerId(TriggerID val) { request.triggerId = val; return this; }
             public Builder body(TriggerUpdateRequest val) { request.body = val; return this; }
-            public UpdateFunctionsTriggerRequest build() { return request; }
+            public UpdateFunctionTriggerRequest build() { return request; }
         }
         public String getProjectId() { return projectId; }
         public String getBranchId() { return branchId; }
@@ -461,8 +461,8 @@ public class Functions {
      *
      * Applies a partial update. The required `type` discriminator must identify the existing trigger kind. The supported types are `schedule` and `storage_object_created`. Editing an inherited trigger creates a child-local shadow with the same `trigger_id`; it remains disabled unless this request explicitly enables it. For a schedule trigger, updating the schedule or enabled state increments `version` and recomputes `next_run_at`. Disabling stops future scheduling but does not cancel occurrences already committed for delivery. For `storage_object_created`, the configuration selects one exact bucket. An omitted object-key prefix matches every key in that bucket; a present prefix is matched byte-for-byte and case-sensitively against the full key, without path normalization or a path-segment boundary. **Note**: This endpoint is currently in Beta.
      */
-    public static TriggerResponse updateFunctionsTrigger(SdkConfig.ClientConfig clientConfig, UpdateFunctionsTriggerRequest request) {
-        return updateFunctionsTrigger(clientConfig, request, null);
+    public static TriggerResponse updateFunctionTrigger(SdkConfig.ClientConfig clientConfig, UpdateFunctionTriggerRequest request) {
+        return updateFunctionTrigger(clientConfig, request, null);
     }
 
     /**
@@ -470,7 +470,7 @@ public class Functions {
      *
      * Applies a partial update. The required `type` discriminator must identify the existing trigger kind. The supported types are `schedule` and `storage_object_created`. Editing an inherited trigger creates a child-local shadow with the same `trigger_id`; it remains disabled unless this request explicitly enables it. For a schedule trigger, updating the schedule or enabled state increments `version` and recomputes `next_run_at`. Disabling stops future scheduling but does not cancel occurrences already committed for delivery. For `storage_object_created`, the configuration selects one exact bucket. An omitted object-key prefix matches every key in that bucket; a present prefix is matched byte-for-byte and case-sensitively against the full key, without path normalization or a path-segment boundary. **Note**: This endpoint is currently in Beta.
      */
-    public static TriggerResponse updateFunctionsTrigger(SdkConfig.ClientConfig clientConfig, UpdateFunctionsTriggerRequest request, SdkConfig.RequestOptions options) {
+    public static TriggerResponse updateFunctionTrigger(SdkConfig.ClientConfig clientConfig, UpdateFunctionTriggerRequest request, SdkConfig.RequestOptions options) {
         String projectId = request.getProjectId();
         String branchId = request.getBranchId();
         TriggerID triggerId = request.getTriggerId();
@@ -483,7 +483,7 @@ public class Functions {
         { Validation.LengthOpts __l = new Validation.LengthOpts(); __l.min = 1; __l.max = 128; Validation.validateLength("trigger_id", triggerId, __l); }
         Validation.validatePattern("trigger_id", triggerId, "^[A-Za-z0-9][A-Za-z0-9_.\\-]{0,127}$");
 
-        return SdkClient.request(clientConfig, "PATCH", "/projects/" + SdkClient.encodePathSegment(projectId) + "/branches/" + SdkClient.encodePathSegment(branchId) + "/triggers/" + SdkClient.encodePathSegment(triggerId) + "", null, body, null, new TypeReference<TriggerResponse>(){}, "updateFunctionsTrigger", null, SdkClient.ResponseDecoder.JSON, options, java.util.Map.of("default", GeneralError.class)).data;
+        return SdkClient.request(clientConfig, "PATCH", "/projects/" + SdkClient.encodePathSegment(projectId) + "/branches/" + SdkClient.encodePathSegment(branchId) + "/triggers/" + SdkClient.encodePathSegment(triggerId) + "", null, body, null, new TypeReference<TriggerResponse>(){}, "updateFunctionTrigger", null, SdkClient.ResponseDecoder.JSON, options, java.util.Map.of("default", GeneralError.class)).data;
     }
 
 
